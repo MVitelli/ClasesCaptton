@@ -1,6 +1,0 @@
-C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia3\DemoDia3\bin\Debug\DemoDia3.exe.config
-C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia3\DemoDia3\bin\Debug\DemoDia3.exe
-C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia3\DemoDia3\bin\Debug\DemoDia3.pdb
-C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia3\DemoDia3\obj\Debug\DemoDia3.csprojResolveAssemblyReference.cache
-C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia3\DemoDia3\obj\Debug\DemoDia3.exe
-C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia3\DemoDia3\obj\Debug\DemoDia3.pdb
