@@ -1,0 +1,5 @@
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\Ejercicio4\bin\Debug\Ejercicio4.exe.config
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\Ejercicio4\bin\Debug\Ejercicio4.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\Ejercicio4\bin\Debug\Ejercicio4.pdb
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\Ejercicio4\obj\Debug\Ejercicio4.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\Ejercicio4\obj\Debug\Ejercicio4.pdb

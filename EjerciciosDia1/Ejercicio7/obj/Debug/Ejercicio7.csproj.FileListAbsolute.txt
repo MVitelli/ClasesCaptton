@@ -1,0 +1,5 @@
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\Ejercicio7\bin\Debug\Ejercicio7.exe.config
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\Ejercicio7\bin\Debug\Ejercicio7.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\Ejercicio7\bin\Debug\Ejercicio7.pdb
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\Ejercicio7\obj\Debug\Ejercicio7.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\Ejercicio7\obj\Debug\Ejercicio7.pdb

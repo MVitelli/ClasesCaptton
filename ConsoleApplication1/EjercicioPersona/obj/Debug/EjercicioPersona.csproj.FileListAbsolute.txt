@@ -1,0 +1,6 @@
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\EjercicioPersona\bin\Debug\EjercicioPersona.exe.config
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\EjercicioPersona\obj\Debug\EjercicioPersona.csprojResolveAssemblyReference.cache
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\EjercicioPersona\bin\Debug\EjercicioPersona.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\EjercicioPersona\bin\Debug\EjercicioPersona.pdb
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\EjercicioPersona\obj\Debug\EjercicioPersona.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\EjercicioPersona\obj\Debug\EjercicioPersona.pdb

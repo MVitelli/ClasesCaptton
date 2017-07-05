@@ -1,0 +1,5 @@
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\DemoDia2.1\bin\Debug\DemoDia2.1.exe.config
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\DemoDia2.1\bin\Debug\DemoDia2.1.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\DemoDia2.1\bin\Debug\DemoDia2.1.pdb
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\DemoDia2.1\obj\Debug\DemoDia2.1.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\DemoDia2.1\obj\Debug\DemoDia2.1.pdb

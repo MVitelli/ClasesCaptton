@@ -1,0 +1,6 @@
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\ConsoleApplication3\obj\Debug\Ejercicio6.csprojResolveAssemblyReference.cache
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe.config
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\ConsoleApplication3\bin\Debug\ConsoleApplication3.pdb
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\ConsoleApplication3\obj\Debug\ConsoleApplication3.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia1\ConsoleApplication3\obj\Debug\ConsoleApplication3.pdb

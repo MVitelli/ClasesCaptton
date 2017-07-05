@@ -1,0 +1,6 @@
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\Ejercicio5\obj\Debug\Ejercicio5.csprojResolveAssemblyReference.cache
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\Ejercicio5\bin\Debug\Ejercicio5.exe.config
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\Ejercicio5\bin\Debug\Ejercicio5.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\Ejercicio5\bin\Debug\Ejercicio5.pdb
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\Ejercicio5\obj\Debug\Ejercicio5.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\ConsoleApplication1\Ejercicio5\obj\Debug\Ejercicio5.pdb
