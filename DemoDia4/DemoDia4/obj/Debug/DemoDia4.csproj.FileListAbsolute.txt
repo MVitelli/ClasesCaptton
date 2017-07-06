@@ -1,0 +1,6 @@
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia4\DemoDia4\bin\Debug\DemoDia4.exe.config
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia4\DemoDia4\bin\Debug\DemoDia4.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia4\DemoDia4\bin\Debug\DemoDia4.pdb
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia4\DemoDia4\obj\Debug\DemoDia4.csprojResolveAssemblyReference.cache
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia4\DemoDia4\obj\Debug\DemoDia4.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia4\DemoDia4\obj\Debug\DemoDia4.pdb

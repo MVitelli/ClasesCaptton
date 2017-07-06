@@ -13,12 +13,12 @@ namespace ejercicio02
             Banco bancoRio = new Banco("Banco Rio");
 
             Cliente cliente = new Cliente("maxi");
-            CuentaBancaria cuentaDeDiego = new CuentaBancaria(cliente, 26474253);
+            CuentaBancaria cuentaDeMaxi = new CuentaBancaria(cliente, 26474253);
 
-            Cliente cliente2 = new Cliente("Mauricio Macri");
+            Cliente cliente2 = new Cliente("Juan Domingo");
             CuentaBancaria cuentaPanama = new CuentaBancaria(cliente2, 58684345);
             
-            bancoRio.añadirCuentaBancaria(cuentaDeDiego);
+            bancoRio.añadirCuentaBancaria(cuentaDeMaxi);
             bancoRio.añadirCuentaBancaria(cuentaPanama);
 
             //Console.WriteLine(bancoRio.hablanCuentas());

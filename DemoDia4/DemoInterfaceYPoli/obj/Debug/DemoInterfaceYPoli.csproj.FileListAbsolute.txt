@@ -1,0 +1,6 @@
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia4\DemoInterfaceYPoli\bin\Debug\DemoInterfaceYPoli.exe.config
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia4\DemoInterfaceYPoli\bin\Debug\DemoInterfaceYPoli.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia4\DemoInterfaceYPoli\bin\Debug\DemoInterfaceYPoli.pdb
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia4\DemoInterfaceYPoli\obj\Debug\DemoInterfaceYPoli.csprojResolveAssemblyReference.cache
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia4\DemoInterfaceYPoli\obj\Debug\DemoInterfaceYPoli.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia4\DemoInterfaceYPoli\obj\Debug\DemoInterfaceYPoli.pdb

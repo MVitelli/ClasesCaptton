@@ -1,0 +1,6 @@
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia04\EjercicioOpcinal\bin\Debug\EjercicioOpcinal.exe.config
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia04\EjercicioOpcinal\bin\Debug\EjercicioOpcinal.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia04\EjercicioOpcinal\bin\Debug\EjercicioOpcinal.pdb
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia04\EjercicioOpcinal\obj\Debug\EjercicioOpcional.csprojResolveAssemblyReference.cache
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia04\EjercicioOpcinal\obj\Debug\EjercicioOpcinal.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia04\EjercicioOpcinal\obj\Debug\EjercicioOpcinal.pdb

@@ -17,9 +17,9 @@ namespace ejercicio02
         }
 
 
-        public string GetCuenta()
+        public int GetCuenta()
         {
-            return cuenta.ToString();
+            return this.cuenta;
         }
     }
 }
