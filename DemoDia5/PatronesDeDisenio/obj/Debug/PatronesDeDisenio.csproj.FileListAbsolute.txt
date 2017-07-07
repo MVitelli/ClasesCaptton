@@ -1,0 +1,9 @@
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia04\PatronesDeDisenio\bin\Debug\PatronesDeDisenio.exe.config
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia04\PatronesDeDisenio\bin\Debug\PatronesDeDisenio.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia04\PatronesDeDisenio\bin\Debug\PatronesDeDisenio.pdb
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia04\PatronesDeDisenio\obj\Debug\PatronesDeDisenio.csprojResolveAssemblyReference.cache
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia04\PatronesDeDisenio\obj\Debug\PatronesDeDisenio.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia04\PatronesDeDisenio\obj\Debug\PatronesDeDisenio.pdb
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia5\PatronesDeDisenio\bin\Debug\PatronesDeDisenio.exe.config
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia5\PatronesDeDisenio\obj\Debug\PatronesDeDisenio.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\DemoDia5\PatronesDeDisenio\obj\Debug\PatronesDeDisenio.pdb

@@ -1,0 +1,6 @@
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia05\EjerciciosDia05\bin\Debug\EjerciciosDia05.exe.config
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia05\EjerciciosDia05\bin\Debug\EjerciciosDia05.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia05\EjerciciosDia05\bin\Debug\EjerciciosDia05.pdb
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia05\EjerciciosDia05\obj\Debug\EjerciciosDia05.csprojResolveAssemblyReference.cache
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia05\EjerciciosDia05\obj\Debug\EjerciciosDia05.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EjerciciosDia05\EjerciciosDia05\obj\Debug\EjerciciosDia05.pdb
