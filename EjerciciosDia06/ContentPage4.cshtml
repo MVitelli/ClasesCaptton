@@ -1,0 +1,39 @@
+﻿@{
+    Page.Title = "Casas de GOT";
+    Layout = "Layout2.cshtml";
+
+    CasaGOT lannister = new CasaGOT("Lannister");
+    CasaGOT stark = new CasaGOT("Stark");
+    CasaGOT targaryen = new CasaGOT("Targaryen");
+    CasaGOT greyjoy = new CasaGOT("Greyjoy");
+
+    List<CasaGOT> listaCasas = new List<CasaGOT>();
+
+    lannister.Lema = "Hear me roar";
+    stark.Lema = "Winter is coming";
+    targaryen.Lema = "Fire and blood";
+    greyjoy.Lema = "We do not sow";
+
+    listaCasas.Add(lannister);
+    listaCasas.Add(stark);
+    listaCasas.Add(targaryen);
+    listaCasas.Add(greyjoy);   
+}
+
+
+<div>
+    <table>
+        <tr>
+            <th>Casa</th>
+            <th>Lema</th>
+        </tr>
+        @foreach (CasaGOT item in listaCasas)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Lema</td>
+            </tr>
+		 
+        }
+    </table>
+</div>

@@ -1,0 +1,6 @@
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\TP1-Integrador\TP1-Integrador\bin\Debug\TP1-Integrador.exe.config
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\TP1-Integrador\TP1-Integrador\obj\Debug\TP1-Integrador.csprojResolveAssemblyReference.cache
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\TP1-Integrador\TP1-Integrador\bin\Debug\TP1-Integrador.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\TP1-Integrador\TP1-Integrador\bin\Debug\TP1-Integrador.pdb
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\TP1-Integrador\TP1-Integrador\obj\Debug\TP1-Integrador.exe
+C:\Users\Alumno\Documents\Visual Studio 2012\Projects\TP1-Integrador\TP1-Integrador\obj\Debug\TP1-Integrador.pdb

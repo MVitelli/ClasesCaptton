@@ -1,0 +1,18 @@
+﻿body {
+}
+
+.EstiloGOT {
+    color: chocolate;
+    font-family: 'Century Gothic';
+    font-size: large;
+}
+
+#EstiloTexto {
+    align-content: center;
+    font-family: Calibri;
+}
+
+#AchicarImagen {
+    width: 100px;
+    height: 100px;
+}

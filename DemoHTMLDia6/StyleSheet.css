@@ -1,0 +1,18 @@
+﻿body {
+    background-color: aquamarine;
+    font-family: 'Comic Sans MS';
+}
+
+#MaxisDiv {
+    background-color: #1d51cc;
+    font-family: 'Times New Roman';
+    color: white;
+}
+
+.MaxisClass {
+    border: solid;
+}
+
+#OtraDiv {
+    text-align: center;
+}

@@ -1,0 +1,30 @@
+﻿@{
+    Page.Title = "Lista de personajes";
+    Layout = "Layout.cshtml";
+
+    PersonajeGOT arya = new PersonajeGOT("Arya");
+    PersonajeGOT jon = new PersonajeGOT("Jon");
+    PersonajeGOT bran = new PersonajeGOT("Bran");
+    PersonajeGOT eddard = new PersonajeGOT("Eddard");
+
+    arya.Mascota = "Nymeria";
+    jon.Mascota = "Ghost";
+    bran.Mascota = "Summer";
+
+    List<PersonajeGOT> listaStarks = new List<PersonajeGOT>();
+
+    listaStarks.Add(arya);
+    listaStarks.Add(jon);
+    listaStarks.Add(bran);
+    listaStarks.Add(eddard);
+}
+
+
+<div>
+    <ol>
+        @foreach (PersonajeGOT item in listaStarks)
+        {
+            <li class="EstiloGOT">@item.Nombre - @item.Mascota</li>
+        }
+    </ol>
+</div>
