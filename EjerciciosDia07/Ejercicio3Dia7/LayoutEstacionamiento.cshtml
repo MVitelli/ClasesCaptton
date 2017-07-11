@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <center>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <a href="Agregar.cshtml">
+        <input type="button" class="btn btn-primary" value="Agregar auto" /></a>
+    <a href="Salir.cshtml">
+        <input type="button" class="btn btn-primary" value="Salida de auto" /></a>
+    <a href="ListaAutos.cshtml">
+        <input type="button" class="btn btn-primary" value="Lista de autos estacionados" /></a>
+    @RenderBody()
+    </center>
+</body>
+</html>

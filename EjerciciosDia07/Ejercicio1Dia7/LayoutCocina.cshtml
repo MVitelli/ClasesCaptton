@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    @RenderSection("head", required: false)
+    <a href="ListaRecetas.cshtml">Lista de recetas</a>
+    <a href="NuevaReceta.cshtml">Agregar receta</a>
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>

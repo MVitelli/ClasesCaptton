@@ -1,0 +1,34 @@
+﻿@{
+    Page.Title = "Title goes here";
+    Layout = "LayoutCocina.cshtml";
+
+}
+
+
+<div>
+    <form action="ListaRecetas.cshtml" method="post">
+
+        <label>Titulo</label>
+        <input type="text" name="titulo" value="" />
+        <br />
+
+        <label>Ingrediente 1</label>
+        <input type="text" name="ingrediente1" value="" />
+        <br />
+
+        <label>Ingrediente 2</label>
+        <input type="text" name="ingrediente2" value="" />
+        <br />
+
+        <label>Ingrediente 3</label>
+        <input type="text" name="ingrediente3" value="" />
+        <br />
+
+        <label>Instrucciones</label>
+        <textarea name="instrucciones"></textarea>
+        <br />
+
+        <input class="btn btn-danger" type="submit" name="btn" value="Enviar" />
+
+    </form>
+</div>

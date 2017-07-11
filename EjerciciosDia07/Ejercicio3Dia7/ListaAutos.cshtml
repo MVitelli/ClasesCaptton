@@ -1,0 +1,49 @@
+﻿@{
+    Page.Title = "Listado de Autos";
+    Layout = "LayoutEstacionamiento.cshtml";
+
+    Estacionamiento.listaAutos = new List<Auto>();
+
+    if (Session["listaDeAutos"] == null)
+    {
+        Session["listaDeAutos"] = Estacionamiento.listaAutos;
+    }
+    if (IsPost)
+    {//Request["btn"] != null
+        Estacionamiento.listaAutos = (List<Auto>)Session["listaDeAutos"];
+
+        string patente = Request["patente"];
+        string dueño = Request["dueño"];
+
+        Auto auto = new Auto(patente, dueño);
+
+        if (Estacionamiento.listaAutos.Count < 30 && Estacionamiento.listaAutos.IndexOf(auto)==-1)
+        {
+            Estacionamiento.listaAutos.Add(auto);
+        }
+        Session["listaDeAutos"] = Estacionamiento.listaAutos;
+    }
+    else
+    {
+        Estacionamiento.listaAutos = (List<Auto>)Session["listaDeAutos"];
+    }
+}
+
+
+<div>
+    <table class="table table-striped">
+        <tr>
+            <th>Dueño</th>
+            <th>Patente</th>
+            <th>Horario de ingreso</th>
+        </tr>
+        @foreach (Auto item in Estacionamiento.listaAutos)
+        {
+            <tr>
+                <td>@item.dueño</td>
+                <td>@item.patente</td>
+                <td>@item.horarioEntrada</td>
+            </tr>
+        }
+    </table>
+</div>

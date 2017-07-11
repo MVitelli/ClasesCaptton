@@ -1,0 +1,12 @@
+﻿@{
+    Page.Title = "Resumen";
+    Layout = "LayoutEstacionamiento.cshtml";
+
+    string costoTotal = Estacionamiento.Salir(Request["patente"]);
+    string patente = Request["patente"];
+}
+
+
+<div>
+    <h1>El auto de patente @patente @costoTotal</h1>
+</div>
