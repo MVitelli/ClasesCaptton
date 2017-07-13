@@ -1,0 +1,70 @@
+﻿@{
+    Page.Title = "Ver receta";
+    Layout = "LayoutRecetas.cshtml";
+
+    Database db = Database.Open("RecetasDB");
+
+
+
+    int idReceta = int.Parse(Request["id"]);
+
+    string queryS = "SELECT * FROM Receta WHERE idReceta=@0";
+    var datosReceta = db.Query(queryS, idReceta);
+
+    string queryS2 = "SELECT * FROM RecetaIngrediente ri INNER JOIN Ingrediente i on i.idIngrediente = ri.idIngrediente"
+    + " WHERE ri.idReceta=@0";
+    var datosReceta2 = db.Query(queryS2, idReceta);
+
+
+            //string queryS3 = "SELECT idIngrediente FROM RecetaIngrediente WHERE idIngrediente=@0";
+            //var ingrediente = db.QueryValue(queryS3);
+
+        
+}
+
+
+<div>
+    <table class="table table-striped">
+        <tr>
+            <th>Nombre</th>
+            <th>Instrucciones</th>
+            <th>Ingredientes</th>
+            <th>Cantidad</th>
+            <th>Unidad de medida</th>
+
+        </tr>
+        @foreach (var item in datosReceta)
+        {
+            <tr>
+                <td>@item["nombre"]</td>
+                <td>@item["instrucciones"]</td>
+                @foreach (var item2 in datosReceta2)
+                {
+                    <tr>
+                        <td></td>
+                        <td></td>
+
+                        <td>
+                            <ul>
+                                <li>@item2["nombre"]</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>@item2["cantidad"]</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>@item2["unidadDeMedida"]</li>
+                            </ul>
+                        </td>
+                    </tr>
+                }
+
+
+            </tr>
+        }
+
+    </table>
+</div>

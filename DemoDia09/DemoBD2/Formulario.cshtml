@@ -1,0 +1,55 @@
+﻿@{
+    Page.Title = "Title goes here";
+    //Layout = "Your Layout Page goes here";
+
+    Database db = Database.Open("DemoBD");
+
+    string queryS = "SELECT * FROM Sector";
+    var sector = db.Query(queryS);
+
+    //(IsPost)
+    if (Request["btn"] != null)
+    {
+        string nombre = Request["nombre"];
+        string apellido = Request["apellido"];
+        int sectorID = int.Parse(Request["sec"]);
+
+        string queryI = "INSERT INTO Empleado VALUES (@0,@1,@2)";
+
+        db.Execute(queryI, nombre, apellido, sectorID);
+
+        Response.Redirect("Index.cshtml");    
+    }
+    
+    
+    
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div>
+    <form action="#" method="post">
+        <!-- # significa que todas las acciones se ejecutan en esta misma pagina-->
+        <label>Nombre</label>
+        <input type="text" name="nombre" value="" />
+        <br />
+
+        <label>Apellido</label>
+        <input type="text" name="apellido" value="" />
+        <br />
+
+        <label>Sector</label>
+        <select name="sec">
+            @foreach (var item in sector)
+            {
+                <option value="@item["idSector"]">@item["nombre"]</option>
+            }
+
+        </select>
+        <br />
+        <br />
+
+        <input class="btn btn-success" type="submit" name="btn" value="Dar de Alta" />
+
+    </form>
+</div>

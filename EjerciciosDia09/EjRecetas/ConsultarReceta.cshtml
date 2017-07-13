@@ -1,0 +1,28 @@
+﻿@{
+    Page.Title = "Consultar receta";
+    Layout = "LayoutRecetas.cshtml";
+
+    Database db = Database.Open("RecetasDB");
+
+    string queryS = "SELECT * FROM Receta";
+    var receta = db.Query(queryS);
+            
+}
+
+
+<div>
+    <h1>Lista de Recetas</h1>
+    <br />
+    <ul>
+        @foreach (var item in receta)
+        {
+            <li><a href="VerReceta.cshtml?id=@item["idReceta"]">@item["nombre"]</a></li>
+        }
+    </ul>
+
+    <br />
+    <br />
+
+    <input class="btn btn-success" type="submit" name="btn" value="Consultar" />
+
+</div>

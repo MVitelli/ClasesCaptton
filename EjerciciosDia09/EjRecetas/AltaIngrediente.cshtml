@@ -1,0 +1,31 @@
+﻿@{
+    Page.Title = "Alta Ingrediente";
+    Layout = "LayoutRecetas.cshtml";
+
+    Database db = Database.Open("RecetasDB");
+
+    //(IsPost)
+    if (Request["btn"] != null)
+    {
+
+        string nombre = Request["nombre"];
+        string query = "INSERT INTO Ingrediente VALUES(@0)";
+        db.Execute(query, nombre);
+
+        Response.Redirect("AltaIngrediente.cshtml");
+    }
+}
+
+
+<div>
+    <form action="#" method="post">
+        <!-- # significa que todas las acciones se ejecutan en esta misma pagina-->
+        <label>Nombre</label>
+        <input type="text" name="nombre" value="" />
+        <br />
+
+        <input class="btn btn-success" type="submit" name="btn" value="Cargar nuevo ingrediente" />
+
+    </form>
+
+</div>

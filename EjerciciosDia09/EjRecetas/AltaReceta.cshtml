@@ -1,0 +1,71 @@
+﻿@{
+    Page.Title = "Alta Receta";
+    Layout = "LayoutRecetas.cshtml";
+
+    Database db = Database.Open("RecetasDB");
+
+    string query1 = "SELECT * FROM Ingrediente";
+
+
+    var ingrediente = db.Query(query1);
+
+    //(IsPost)
+    if (Request["btn"] != null)
+    {
+
+        string nombre = Request["nombre"];
+        string instrucciones = Request["instrucciones"];
+
+        string queryI = "INSERT INTO Receta VALUES (@0,@1)";
+        db.Execute(queryI, nombre, instrucciones);
+
+        string query2 = "SELECT idReceta FROM Receta WHERE nombre LIKE @0";
+        var receta = db.QueryValue(query2, nombre);
+
+        int cantidad = int.Parse(Request["cantidad"]);
+        string unidadDeMedida = Request["unidadDeMedida"];
+        int idIngrediente = int.Parse(Request["ingrediente"]);
+
+        string query3 = "INSERT INTO RecetaIngrediente VALUES(@0,@1,@2,@3)";
+        db.Execute(query3, receta, idIngrediente, cantidad, unidadDeMedida);
+
+        Response.Redirect("AltaReceta.cshtml");
+    }
+}
+
+
+<div>
+    <form action="#" method="post">
+        <!-- # significa que todas las acciones se ejecutan en esta misma pagina-->
+        <label>Nombre</label>
+        <input type="text" name="nombre" value="" />
+        <br />
+
+        <label>Ingrediente</label>
+        <select name="ingrediente">
+            @foreach (var item in ingrediente)
+            {
+                <option value="@item["idIngrediente"]">@item["nombre"]</option>
+            }
+
+        </select>
+        <br />
+
+        <label>Cantidad</label>
+        <input type="text" name="cantidad" value="" />
+        <br />
+
+        <label>Unidad de Medida</label>
+        <input type="text" name="unidadDeMedida" value="" />
+        <br />
+
+        <label>Instrucciones</label>
+        <textarea name="instrucciones"></textarea>
+
+        <br />
+        <br />
+
+        <input class="btn btn-success" type="submit" name="btn" value="Dar de Alta Receta" />
+
+    </form>
+</div>

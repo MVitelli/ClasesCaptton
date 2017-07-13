@@ -1,0 +1,46 @@
+﻿@{
+    Page.Title = "Title goes here";
+    //Layout = "Your Layout Page goes here";
+
+    Database db = Database.Open("DemoBD");
+
+    var lista = db.Query("SELECT E.nombre, E.apellido, S.nombre as Sector from " +
+        "Empleado E INNER JOIN Sector S on E.idSector = S.idSector");
+        
+    <a class="btn btn-success" href="Formulario.cshtml">Agregar empleado</a>
+    <a class="btn btn-danger" href="RemoverEmpleado.cshtml">Remover empleado</a>
+    
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div>
+    <table class="table table-striped">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Sector</th>
+
+        </tr>
+        @foreach (var item in lista)
+        {
+            if (item["nombre"] == "diego")
+            {
+            <tr class="danger">
+                <td>@item["nombre"]</td>
+                <td>@item["apellido"]</td>
+                <td>@item["Sector"]</td>
+
+            </tr>
+            }
+            else
+            {
+            <tr class="active">
+                <td>@item["nombre"]</td>
+                <td>@item["apellido"]</td>
+                <td>@item["Sector"]</td>
+            </tr>
+            }
+        }
+    </table>
+</div>

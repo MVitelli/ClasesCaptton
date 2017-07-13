@@ -1,0 +1,41 @@
+﻿@{
+    Page.Title = "Baja Ingrediente";
+    Layout = "LayoutRecetas.cshtml";
+
+    Database db = Database.Open("RecetasDB");
+
+    string queryS = "SELECT * FROM Ingrediente";
+    var ingrediente = db.Query(queryS);
+
+    //(IsPost)
+    if (Request["btn"] != null)
+    {
+        int idIngrediente = int.Parse(Request["id"]);
+
+        db.Execute("DELETE FROM RecetaIngrediente WHERE idIngrediente = @0", idIngrediente);
+
+        db.Execute("DELETE FROM Ingrediente WHERE idIngrediente = @0", idIngrediente);
+
+        Response.Redirect("BajaIngrediente.cshtml");
+    }
+}
+
+
+<div>
+    <form action="#" method="post">
+        <!-- # significa que todas las acciones se ejecutan en esta misma pagina-->
+        <label>Nombre</label>
+        <select name="id">
+            @foreach (var item in ingrediente)
+            {
+                <option value="@item["idIngrediente"]">@item["nombre"]</option>
+            }
+
+        </select>
+        <br />
+        <br />
+
+        <input class="btn btn-success" type="submit" name="btn" value="Eliminar ingrediente" />
+
+    </form>
+</div>

@@ -1,0 +1,41 @@
+﻿@{
+    Page.Title = "Baja Receta";
+    Layout = "LayoutRecetas.cshtml";
+    
+    Database db = Database.Open("RecetasDB");
+
+    string queryS = "SELECT * FROM Receta";
+    var receta = db.Query(queryS);
+
+    //(IsPost)
+    if (Request["btn"] != null)
+    {
+        int idReceta = int.Parse(Request["id"]);
+
+        db.Execute("DELETE FROM RecetaIngrediente WHERE idReceta = @0", idReceta);
+
+        db.Execute("DELETE FROM Receta WHERE idReceta = @0", idReceta);
+
+        Response.Redirect("BajaReceta.cshtml");
+    }
+}
+
+
+<div>
+    <form action="#" method="post">
+        <!-- # significa que todas las acciones se ejecutan en esta misma pagina-->
+        <label>Nombre</label>
+        <select name="id">
+            @foreach (var item in receta)
+            {
+                <option value="@item["idReceta"]">@item["nombre"]</option>
+            }
+
+        </select>
+        <br />
+        <br />
+
+        <input class="btn btn-success" type="submit" name="btn" value="Eliminar receta" />
+
+    </form>
+</div>
