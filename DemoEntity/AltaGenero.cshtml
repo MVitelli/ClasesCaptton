@@ -1,0 +1,49 @@
+﻿@{
+    Page.Title = "Title goes here";
+    Layout = "LayoutLibros.cshtml";
+
+    LibrosEntities le = new LibrosEntities();
+
+    if (IsPost)
+    {
+        if (Request["nombre"] != "")
+        {
+            bool existeGenero = false;
+            foreach (Genero item in le.Genero)
+            {
+                if (item.nombre == Request["nombre"])
+                {
+                    existeGenero = true;
+                }
+            }
+            if (!existeGenero)
+            {
+                Genero generoNuevo = new Genero();
+                generoNuevo.nombre = Request["nombre"];
+                le.Genero.Add(generoNuevo);
+                
+                le.SaveChanges();
+
+                Response.Redirect("AltaGenero.cshtml");
+            }
+        }
+        else
+        {
+            
+    <h1>DEBE COMPLETAR LOS CAMPOS</h1>
+        
+        }
+    }
+}
+
+
+<div>
+    <form action="#" method="post">
+        <label>Ingrese genero</label>
+        <input type="text" name="nombre" value="" />
+        <br />
+
+        <input type="submit" name="btn" value="Agregar genero" />
+    </form>
+
+</div>

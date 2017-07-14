@@ -1,0 +1,76 @@
+﻿@{
+    Page.Title = "Title goes here";
+    Layout = "LayoutLibros.cshtml";
+
+    LibrosEntities le = new LibrosEntities();
+
+    if (IsPost)
+    {
+        Libro librito = new Libro();
+        librito.ISBN = Request["isbn"];
+        librito.titulo = Request["title"];
+        librito.fechaDeEdicion = DateTime.Parse(Request["fecha"]);
+        librito.cantidadPaginas = int.Parse(Request["paginas"]);
+
+        Editorial edi = new Editorial();
+        edi.nombre = Request["editorial"];
+        edi.ubicacion = Request["lugar"];
+        librito.Editorial = edi;
+        //librito.Editorial.idEditorial = edi.idEditorial;
+
+        le.Libro.Add(librito);
+
+        le.SaveChanges();
+
+        Response.Redirect("Index.cshtml");
+    }
+}
+
+<div>
+    <form action="#" method="post">
+        <label>ISBN</label>
+        <input type="text" name="isbn" value="" />
+        <br />
+
+        <label>Titulo</label>
+        <input type="text" name="title" value="" />
+        <br />
+
+        <label>Fecha de Edicion</label>
+        <input type="date" name="fecha" value="" />
+        <br />
+
+        <label>Cantidad de paginas</label>
+        <input type="text" name="paginas" value="" />
+        <br />
+
+        <label>Editorial</label>
+        <select name="editorial">
+            @foreach (Editorial item in le.Editorial)
+            {
+                <option value=@item.nombre>@item.nombre</option>
+            }
+        </select>
+
+        <label>Lugar de la editorial</label>
+        <input type="text" name="lugar" value="" />
+        <br />
+
+        <label>Autor</label>
+        <select name="autor">
+            @foreach (Autor item in le.Autor)
+            {
+                <option value=@item.nombre>@item.nombre</option>
+            }
+        </select>
+
+        <label>Genero</label>
+        <select name="genero">
+            @foreach (Genero item in le.Genero)
+            {
+                <option value=@item.nombre>@item.nombre</option>
+            }
+        </select>
+        <input type="submit" name="btn" value="Nuevo Libro" />
+    </form>
+</div>

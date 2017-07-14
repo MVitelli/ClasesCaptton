@@ -1,0 +1,19 @@
+﻿@{
+    Page.Title = "Title goes here";
+    Layout = "LayoutLibros.cshtml";
+
+    LibrosEntities le = new LibrosEntities();
+    
+       
+    
+}
+
+
+<div>
+    <ul>
+        @foreach (var item in le.Libro)
+        {
+            <li>@item.titulo</li>    
+        }
+    </ul>
+</div>

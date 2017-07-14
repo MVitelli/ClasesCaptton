@@ -1,0 +1,38 @@
+﻿@{
+    Page.Title = "Title goes here";
+    Layout = "LayoutLibros.cshtml";
+
+    LibrosEntities le = new LibrosEntities();
+
+    if (IsPost)
+    {
+        int idAutor = int.Parse(Request["id"]);
+
+        Autor autor = le.Autor.SingleOrDefault(a => a.idAutor == idAutor);
+        List<Libro> listaLibros = autor.Libro.ToList();
+
+        listaLibros.Clear();
+
+        le.Autor.Remove(autor);
+
+        le.SaveChanges();
+
+        Response.Redirect("BajaAutor.cshtml");
+    }
+}
+
+
+<div>
+    <form action="#" method="post">
+
+        <select name="id">
+            @foreach (Autor item in le.Autor)
+            {
+                <option value="@item.idAutor">@item.nombre</option>
+            }
+        </select>
+        <br />
+
+        <input type="submit" name="btn" value="Eliminar autor" />
+    </form>
+</div>

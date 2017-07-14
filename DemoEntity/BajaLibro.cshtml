@@ -1,0 +1,42 @@
+﻿@{
+    Page.Title = "BajaLibro";
+    Layout = "LayoutLibros.cshtml";
+
+    LibrosEntities le = new LibrosEntities();
+
+    if (IsPost)
+    {
+        string isbn = Request["isbn"];
+        Libro libro = le.Libro.SingleOrDefault(l => l.ISBN == isbn);//trae el libro que corresponde al isbn
+        List<Genero> listaGeneros = libro.Genero.ToList();
+        List<Autor> listaAutores = libro.Autor.ToList();
+
+        listaGeneros.Clear();
+        listaAutores.Clear();
+        //libro.Genero.Clear();
+        
+        //libro.Autor.Clear();
+        
+        le.Libro.Remove(libro);
+
+        le.SaveChanges();
+
+        Response.Redirect("Index.cshtml");
+    }
+}
+
+
+<div>
+    <form action="#" method="post">
+        <select name="isbn">
+            @foreach (Libro item in le.Libro)
+            {
+                <option value=@item.ISBN>@item.titulo</option>
+            }
+        </select>
+
+        <input type="submit" name="btn" value="Eliminar libro" />
+
+    </form>
+
+</div>
