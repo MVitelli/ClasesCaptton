@@ -1,0 +1,137 @@
+﻿@{
+    Page.Title = "Title goes here";
+    Layout = "LayoutRecetas.cshtml";
+
+    RecetasEntities re = new RecetasEntities();
+
+    Receta miReceta = new Receta();
+    Ingrediente miIngrediente = new Ingrediente();
+    Ingrediente miIngrediente2 = new Ingrediente();
+    Ingrediente miIngrediente3 = new Ingrediente();
+    RecetaIngrediente relacion = new RecetaIngrediente();
+    RecetaIngrediente relacion2 = new RecetaIngrediente();
+    RecetaIngrediente relacion3 = new RecetaIngrediente();
+
+    if (IsPost)
+    {
+        miReceta.nombre = Request["nombre"];
+        miReceta.instrucciones = Request["instrucciones"];
+        re.Receta.Add(miReceta);
+        miIngrediente.nombre = Request["ingrediente"];
+        Ingrediente consultaIngrediente = re.Ingrediente.SingleOrDefault(i => i.nombre == miIngrediente.nombre);
+        if (consultaIngrediente == null)
+        {
+            re.Ingrediente.Add(miIngrediente);
+        }
+        else
+        {
+            miIngrediente = consultaIngrediente;
+        }
+
+        miIngrediente2.nombre = Request["ingrediente2"];
+        Ingrediente consultaIngrediente2 = re.Ingrediente.SingleOrDefault(i => i.nombre == miIngrediente2.nombre);
+        if (consultaIngrediente2 == null)
+        {
+            re.Ingrediente.Add(miIngrediente2);
+        }
+        else
+        {
+            miIngrediente2 = consultaIngrediente2;
+        }
+
+        miIngrediente3.nombre = Request["ingrediente3"];
+        Ingrediente consultaIngrediente3 = re.Ingrediente.SingleOrDefault(i => i.nombre == miIngrediente3.nombre);
+        if (consultaIngrediente3== null)
+        {
+            re.Ingrediente.Add(miIngrediente3);
+        }
+        else
+        {
+            miIngrediente3 = consultaIngrediente3;
+        }
+
+
+        relacion.cantidad = int.Parse(Request["cantidad"]);
+        relacion2.cantidad = int.Parse(Request["cantidad2"]);
+        relacion3.cantidad = int.Parse(Request["cantidad3"]);
+        relacion.unidadDeMedida = Request["unidadDeMedida"];
+        relacion2.unidadDeMedida = Request["unidadDeMedida2"];
+        relacion3.unidadDeMedida = Request["unidadDeMedida3"];
+
+
+        miReceta.RecetaIngrediente.Add(relacion);
+        miReceta.RecetaIngrediente.Add(relacion2);
+        miReceta.RecetaIngrediente.Add(relacion3);
+        miIngrediente.RecetaIngrediente.Add(relacion);
+        miIngrediente2.RecetaIngrediente.Add(relacion2);
+        miIngrediente3.RecetaIngrediente.Add(relacion3);
+        re.RecetaIngrediente.Add(relacion);
+        re.RecetaIngrediente.Add(relacion2);
+        re.RecetaIngrediente.Add(relacion3);
+
+        re.SaveChanges();
+
+        Response.Redirect("ListaRecetas.cshtml");
+    }
+    
+}
+
+
+<div>
+    <form action="#" method="post">
+        <label>Nombre</label>
+        <input type="text" name="nombre" value="" />
+        <br />
+
+        <label>Ingrediente 1</label>
+        <select name="ingrediente">
+            @foreach (Ingrediente item in re.Ingrediente)
+            {
+                <option value=@item.nombre>@item.nombre</option>
+            }
+        </select>
+        <label>Cantidad</label>
+        <input type="text" name="cantidad" value="" />
+        <label>Unidad de Medida</label>
+        <input type="text" name="unidadDeMedida" value="" />
+        <br />
+        <br />
+
+        <label>Ingrediente 2</label>
+        <select name="ingrediente2">
+            @foreach (Ingrediente item in re.Ingrediente)
+            {
+                <option value=@item.nombre>@item.nombre</option>
+            }
+        </select>
+        <label>Cantidad</label>
+        <input type="text" name="cantidad2" value="" />
+        <label>Unidad de Medida</label>
+        <input type="text" name="unidadDeMedida2" value="" />
+        <br />
+        <br />
+
+        <label>Ingrediente 3</label>
+        <select name="ingrediente3">
+            @foreach (Ingrediente item in re.Ingrediente)
+            {
+                <option value=@item.nombre>@item.nombre</option>
+            }
+        </select>
+        <label>Cantidad</label>
+        <input type="text" name="cantidad3" value="" />
+        <label>Unidad de Medida</label>
+        <input type="text" name="unidadDeMedida3" value="" />
+        <br />
+        <br />
+        <br />
+
+        <label>Instrucciones</label>
+        <textarea name="instrucciones"></textarea>
+
+        <br />
+        <br />
+
+        <input class="btn btn-success" type="submit" name="btn" value="Dar de Alta Receta" />
+    </form>
+</div>

@@ -1,0 +1,37 @@
+﻿@{
+    Page.Title = "Title goes here";
+    Layout = "LayoutLibros.cshtml";
+
+    LibrosEntities le = new LibrosEntities();
+
+    if (IsPost)
+    {
+        int idEditorial = int.Parse(Request["id"]);
+
+        Editorial edi = le.Editorial.Find(idEditorial);
+        edi.Libro.Clear();
+
+        le.Editorial.Remove(edi);
+
+        le.SaveChanges();
+
+        Response.Redirect("BajaEditorial.cshtml");
+    }
+}
+
+
+<div>
+    <form action="#" method="post">
+
+        <select name="id">
+            @foreach (Editorial item in le.Editorial)
+            {
+                <option value="@item.idEditorial">@item.nombre</option>
+            }
+        </select>
+        <br />
+
+        <input type="submit" name="btn" value="Eliminar editorial" />
+    </form>
+
+</div>

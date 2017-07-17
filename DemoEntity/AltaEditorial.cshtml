@@ -1,9 +1,54 @@
 ﻿@{
-    Page.Title = "Title goes here";
-    Layout = "Layout.cshtml";
+    Page.Title = "AltaEditorial";
+    Layout = "LayoutLibros.cshtml";
+
+    LibrosEntities le = new LibrosEntities();
+
+    if (IsPost)
+    {
+        if (Request["nombre"] != "")
+        {
+            bool existeEditorial = false;
+            foreach (Editorial item in le.Editorial)
+            {
+                if (item.nombre == Request["nombre"])
+                {
+                    existeEditorial = true;
+                }
+            }
+            if (!existeEditorial)
+            {
+                Editorial editorialNueva = new Editorial();
+                editorialNueva.nombre = Request["nombre"];
+                editorialNueva.ubicacion = Request["lugar"];
+
+                le.Editorial.Add(editorialNueva);
+
+                le.SaveChanges();
+
+                Response.Redirect("AltaEditorial.cshtml");
+            }
+        }
+        else
+        {
+            
+    <h1>DEBE COMPLETAR LOS CAMPOS</h1>
+        
+        }
+
+    }
 }
 
 
 <div>
-    
+    <form action="#" method="post">
+        <label>Ingrese editorial</label>
+        <input type="text" name="nombre" value="" />
+        <br />
+
+        <label>Ingrese ubicacion</label>
+        <input type="text" name="lugar" value="" />
+
+        <input type="submit" name="btn" value="Agregar editorial" />
+    </form>
 </div>

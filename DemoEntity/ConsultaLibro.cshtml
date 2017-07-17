@@ -1,0 +1,73 @@
+﻿@{
+    Page.Title = "Consultar";
+    Layout = "LayoutLibros.cshtml";
+
+    LibrosEntities le = new LibrosEntities();
+    Libro miLibro = new Libro();
+
+
+    if (IsPost)
+    {
+        string isbn = Request["isbn"];
+        miLibro = le.Libro.Find(isbn);
+
+
+    }
+}
+
+
+<div>
+    @if (IsPost)
+    {
+        <table class="table table-inverse">
+            <tr>
+                <th>Titulo</th>
+                <th>ISBN</th>
+                <th>Fecha de Edicion</th>
+                <th>Editorial</th>
+                <th>Ubicacion de la Editorial</th>
+                <th>Genero</th>
+                <th>Autor</th>
+                <th>Cantidad de Paginas</th>
+            </tr>
+            <tr>
+                <td>@miLibro.titulo</td>
+                <td>@miLibro.ISBN</td>
+                <td>@miLibro.fechaDeEdicion.Year -@miLibro.fechaDeEdicion.Month - @miLibro.fechaDeEdicion.Day </td>
+                <td>@miLibro.Editorial.nombre</td>
+                <td>@miLibro.Editorial.ubicacion</td>
+                <td>
+
+                    @foreach (Genero item in miLibro.Genero)
+                    {
+                    
+                        @item.nombre <br />
+                    }
+
+                </td>
+                <td>
+                    @foreach (Autor item in miLibro.Autor)
+                    {
+                    
+                        @item.nombre <br />
+                    }
+
+                </td>
+                <td>@miLibro.cantidadPaginas</td>
+            </tr>
+        </table>
+    }
+    else
+    {
+        <form action="#" method="post">
+            <select name="isbn">
+                @foreach (Libro item in le.Libro)
+                {
+                    <option value=@item.ISBN>@item.titulo</option>
+                }
+            </select>
+
+            <input type="submit" name="btn" value="Consultar" />
+        </form>
+    }
+</div>

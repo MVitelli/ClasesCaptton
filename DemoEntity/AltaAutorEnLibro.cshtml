@@ -1,0 +1,68 @@
+﻿@{
+    Page.Title = "AltaAutorEnLibro";
+    Layout = "LayoutLibros.cshtml";
+
+    LibrosEntities le = new LibrosEntities();
+
+    if (IsPost)
+    {
+        Libro miLibro = le.Libro.Find(Request["isbn"]);
+        bool existeAutor = false;
+        foreach (Autor item in le.Autor)
+        {
+            if (item.nombre == Request["nombre"])
+            {
+                existeAutor = true;
+            }
+        }
+        if (!existeAutor)
+        {
+            Autor autorNuevo = new Autor();
+            autorNuevo.nombre = Request["nombre"];
+            autorNuevo.nacionalidad = Request["nacionalidad"];
+            le.Autor.Add(autorNuevo);
+
+            miLibro.Autor.Add(autorNuevo);
+
+            le.SaveChanges();
+
+            Response.Redirect("AltaAutor.cshtml");
+        }
+        else
+        {
+            string nombre = Request["nombre"];
+            Autor autor = le.Autor.SingleOrDefault(a => a.nombre == nombre);
+
+            miLibro.Autor.Add(autor);
+        }
+
+        le.SaveChanges();
+
+        Response.Redirect("AltaAutorEnLibro.cshtml");
+
+    }
+    
+}
+
+
+<div>
+    <form action="#" method="post">
+        <select name="isbn">
+            @foreach (Libro item in le.Libro)
+            {
+                <option value="@item.ISBN">@item.titulo</option>    
+            }
+        </select>
+        <br />
+
+        <label>Ingrese nombre</label>
+        <input type="text" name="nombre" value="" />
+        <br />
+
+        <label>Ingrese nacionalidad</label>
+        <input type="text" name="nacionalidad" value="" />
+
+        <input type="submit" name="btn" value="Agregar autor" />
+    </form>
+
+</div>

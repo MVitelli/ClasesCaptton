@@ -1,5 +1,5 @@
 ﻿@{
-    Page.Title = "Title goes here";
+    Page.Title = "Indice";
     Layout = "LayoutLibros.cshtml";
 
     LibrosEntities le = new LibrosEntities();
@@ -13,7 +13,13 @@
     <ul>
         @foreach (var item in le.Libro)
         {
-            <li>@item.titulo</li>    
+            <li>@item.titulo</li>
+            <ul>
+                @foreach (Autor item2 in item.Autor)
+                {
+                    <li>@item2.nombre</li>
+                }
+            </ul>   
         }
     </ul>
 </div>
