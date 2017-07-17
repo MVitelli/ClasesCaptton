@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 */
 namespace TP1_Integrador
 {
-    class CosasParaVender
+    abstract class CosasParaVender
     {
         private string nombre;
         private int id;
@@ -42,5 +42,7 @@ namespace TP1_Integrador
         {
             return this.precio;
         }
+        abstract public void Mostrar();
+        
     }
 }

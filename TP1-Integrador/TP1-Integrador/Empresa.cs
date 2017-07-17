@@ -136,16 +136,7 @@ namespace TP1_Integrador
             Console.WriteLine("Lista de Productos y Servicios\n");
             foreach (CosasParaVender item in listaCosas)
             {
-                if (item is Manufactura)
-                {
-                    Manufactura manufactura = (Manufactura)item;
-                    Console.WriteLine("Manufactura\n nombre: {0}, ID: {1}, precio: ${2}, en stock: {3} unidades", manufactura.GetNombre(), manufactura.GetId(), manufactura.GetPrecio(), manufactura.GetStock());
-                }
-                else
-                {
-                    Servicio servicio = (Servicio)item;
-                    Console.WriteLine("Servicio\n nombre: {0}, ID: {1}, precio: ${2}.", servicio.GetNombre(), servicio.GetId(), servicio.GetPrecio());
-                }
+                item.Mostrar();
             }
             Console.WriteLine("------------------------------------------------------------");
         }

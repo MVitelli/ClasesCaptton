@@ -19,5 +19,9 @@ namespace TP1_Integrador
             : base(id, precio, nombre)
         {
         }
+        public override void Mostrar()
+        {
+            Console.WriteLine("Servicio\n nombre: {0}, ID: {1}, precio: ${2}.", this.GetNombre(), this.GetId(), this.GetPrecio());
+        }
     }
 }

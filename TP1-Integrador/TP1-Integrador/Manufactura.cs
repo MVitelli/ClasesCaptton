@@ -48,6 +48,10 @@ namespace TP1_Integrador
         {
             Console.WriteLine("El producto {0} tiene un stock de {1} unidades", this.GetNombre(), this.GetStock());
         }
+        public override void Mostrar()
+        {
+            Console.WriteLine("Manufactura\n nombre: {0}, ID: {1}, precio: ${2}, en stock: {3} unidades", this.GetNombre(), this.GetId(), this.GetPrecio(), this.GetStock());
+        }
     }
 
 
