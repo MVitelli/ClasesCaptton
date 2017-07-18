@@ -1,9 +1,35 @@
 ﻿@{
-    Page.Title = "Title goes here";
-    //Layout = "Your Layout Page goes here";
+    Page.Title = "Agregar Ingrediente";
+    Layout = "LayoutRecetas.cshtml";
+
+    RecetasEntities re = new RecetasEntities();
+
+    if (IsPost)
+    {
+        Ingrediente miIngrediente = new Ingrediente();
+
+        miIngrediente.nombre = Request["ingrediente"];
+        Ingrediente consultaIngrediente = re.Ingrediente.SingleOrDefault(i => i.nombre == miIngrediente.nombre);
+        if (consultaIngrediente == null)
+        {
+            re.Ingrediente.Add(miIngrediente);
+        }
+        re.SaveChanges();
+
+        Response.Redirect("AgregarIngrediente.cshtml");
+    }
+    
 }
 
 
+
 <div>
-    
+    <form action="#" method="post">
+        <br />
+        <label>Ingrediente</label>
+        <input type="text" name="ingrediente" value="" />
+        <br />
+
+        <input class="btn btn-warning" type="submit" name="btn" value="Agregar ingrediente" />
+    </form>
 </div>

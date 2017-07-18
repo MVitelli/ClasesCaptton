@@ -1,0 +1,70 @@
+﻿@{
+    Page.Title = "Agregar ingrediente a receta";
+    Layout = "LayoutRecetas.cshtml";
+
+    RecetasEntities re = new RecetasEntities();
+    RecetaIngrediente consulta = null;
+
+    if (IsPost)
+    {
+
+
+
+        int idIngrediente = int.Parse(Request["ingrediente"]);
+        int idReceta = int.Parse(Request["receta"]);
+
+
+        consulta = re.RecetaIngrediente.SingleOrDefault(r => r.idIngrediente == idIngrediente && r.idReceta == idReceta);
+
+        if (consulta == null)
+        {
+            Ingrediente miIngrediente = re.Ingrediente.Find(idIngrediente);
+            Receta miReceta = re.Receta.Find(idReceta);
+            consulta = new RecetaIngrediente();
+            consulta.cantidad = int.Parse(Request["cantidad"]);
+            consulta.unidadDeMedida = Request["unidadDeMedida"];
+            miReceta.RecetaIngrediente.Add(consulta);
+            miIngrediente.RecetaIngrediente.Add(consulta);
+            re.RecetaIngrediente.Add(consulta);
+            re.SaveChanges();
+
+        }
+        else
+        {
+    <h1>Ya existe este ingrediente en la receta</h1>
+        }
+    }
+}
+
+
+<div>
+    <form action="#" method="post">
+        <label>Elegir receta</label>
+        <select name="receta">
+            @foreach (Receta item in re.Receta)
+            {
+                <option value="@item.idReceta">@item.nombre</option>
+            }
+        </select>
+        <br />
+
+        <label>Ingrediente</label>
+        <select name="ingrediente">
+            @foreach (Ingrediente item in re.Ingrediente)
+            {
+                <option value="@item.idIngrediente">@item.nombre</option>    
+            }
+        </select>
+        <br />
+
+        <label>Cantidad</label>
+        <input type="text" name="cantidad" value="" />
+        <br />
+
+        <label>Unidad de medida</label>
+        <input type="text" name="unidadDeMedida" value="" />
+        <br />
+
+        <input class="btn btn-success" type="submit" name="btn" value="Agregar" />
+    </form>
+</div>
