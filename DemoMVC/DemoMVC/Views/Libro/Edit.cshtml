@@ -13,11 +13,12 @@
 
     <fieldset>
         <legend>Libro</legend>
-
+       
         <div class="editor-label">
             @Html.LabelFor(model => model.ISBN)
         </div>
         <div class="editor-field">
+            @Html.HiddenFor(model => model.ISBN)
             @Html.DisplayFor(model => model.ISBN)
         </div>
 
@@ -35,10 +36,9 @@
         @foreach (var item in Model.Autor)
         {
             <div class="editor-field">
-                @Html.EditorFor(item2 => item.nombre)
-                @Html.EditorFor(item2 => item.nacionalidad)
-                @Html.ValidationMessageFor(item2 => item.nombre)
-                @Html.ValidationMessageFor(item2 => item.nacionalidad)
+                <label>@item.nombre </label>  
+                <label>@item.nacionalidad</label>
+                @Html.ActionLink("Quitar", "Quitar", new { id=item.idAutor, idLibro = Model.ISBN })       
             </div> 
         }
 

@@ -44,7 +44,7 @@ namespace DemoMVC.Controllers
                 return View(db.Libro.Where(l => l.idEditorial == id).ToList());
             }
             else
-                if (Request["btn2"]!=null)
+                if (Request["btn2"] != null)
                 {
                     string busqueda2 = fm["aut"];
                     if (busqueda2 == "")
@@ -200,6 +200,18 @@ namespace DemoMVC.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        public ActionResult Quitar(int id, string idLibro)
+        {
+            Autor autor = db.Autor.Find(id);
+            Libro libro = db.Libro.Find(idLibro);
+
+            libro.Autor.Remove(autor);
+            db.SaveChanges();
+            return View("Index");
+            
+
         }
     }
 }

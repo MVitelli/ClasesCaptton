@@ -1,0 +1,50 @@
+﻿@model EstacionamientoMVC.Models.vehiculo
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Editar tarifas</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>vehiculo</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.patente)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.patente)
+            @Html.HiddenFor(model => model.patente)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idTipo, "tipoDeVehiculo")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idTipo", String.Empty)
+            @Html.ValidationMessageFor(model => model.idTipo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.marca)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.marca)
+            @Html.ValidationMessageFor(model => model.marca)
+        </div>
+
+        <p>
+            <input type="submit" value="Guardar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver al indice", "Index")
+</div>
+

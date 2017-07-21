@@ -1,0 +1,37 @@
+﻿@model EstacionamientoMVC.Models.vehiculo
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "../EstacionamientoLayout.cshtml"; 
+}
+
+<h2>Detalles</h2>
+
+<fieldset>
+    <legend>vehiculo</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.patente)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.patente)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.tipoDeVehiculo.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tipoDeVehiculo.nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.marca)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.marca)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.patente}) |
+    @Html.ActionLink("Volver al indice", "Index")
+</p>

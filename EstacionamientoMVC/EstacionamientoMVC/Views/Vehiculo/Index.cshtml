@@ -1,0 +1,78 @@
+﻿@model IEnumerable<EstacionamientoMVC.Models.vehiculo>
+
+@{
+    ViewBag.Title = "Indice de vehiculos";
+    Layout = "../EstacionamientoLayout.cshtml"; 
+}
+
+<h2>Lista de vehiculos</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo vehiculo", "Create", null, new { @class = "btn btn-success"})
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.patente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipoDeVehiculo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marca)
+        </th>
+        <th>Estado
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.patente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipoDeVehiculo.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.marca)
+            </td>
+
+            @if (item.registros.Where(r => r.fechaEgreso == null).Count() > 0)
+            {
+                <td>Estacionado</td>     
+            }
+            else
+            {
+                <td>No Estacionado</td>
+            }
+
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.patente }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.patente }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.patente })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<label>Filtrar por patente</label>
+<br />
+<form action="#" method="post">
+    @Html.DropDownList("aut", "Seleccione vehiculo")
+    <input type="submit" name="btn" value="Buscar vehiculo" />
+</form>
+<br />
+
+<label>Filtrar por estado</label>
+<form action="#" method="post">
+    <select name="estacionados">
+        <option value="1">Estacionados</option>
+        <option value="0">No Estacionados</option>
+        <option value="2">TODOS</option>
+    </select>
+    <input type="submit" name="btn2" value="Filtrar" />
+</form>
+

@@ -1,0 +1,41 @@
+﻿@model EstacionamientoMVC.Models.vehiculo
+
+@{
+    ViewBag.Title = "Eliminar auto";
+    Layout = "../EstacionamientoLayout.cshtml"; 
+}
+
+<h2>Eliminar vehiculo</h2>
+
+<h3>¿Quere elimina esto ñeri?</h3>
+<fieldset>
+    <legend>vehiculo</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.patente)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.patente)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.tipoDeVehiculo.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tipoDeVehiculo.nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.marca)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.marca)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Eliminar" /> |
+        @Html.ActionLink("Volver al indice", "Index")
+    </p>
+}
