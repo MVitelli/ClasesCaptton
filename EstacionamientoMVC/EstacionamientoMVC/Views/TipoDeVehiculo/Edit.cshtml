@@ -1,0 +1,50 @@
+﻿@model EstacionamientoMVC.Models.tipoDeVehiculo
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "../EstacionamientoLayout.cshtml"; 
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>tipoDeVehiculo</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idTipo)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.idTipo)
+            @Html.HiddenFor(model => model.idTipo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nombre)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.nombre)
+            @Html.HiddenFor(model => model.nombre)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tarifa)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tarifa)
+            @Html.ValidationMessageFor(model => model.tarifa)
+        </div>
+
+        <p>
+            <input type="submit" value="Guardar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

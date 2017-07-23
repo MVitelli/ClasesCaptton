@@ -1,0 +1,17 @@
+﻿@{
+    Page.Title = "Lista de Recetas";
+    Layout = "LayoutRecetas.cshtml";
+
+    RecetasEntities re = new RecetasEntities();
+       
+}
+
+
+<div>
+    <h1>Lista Recetas</h1>
+    @foreach (Receta item in re.Receta)
+    {
+            
+        <a class="btn btn-default" href="VerReceta.cshtml?id=@item.idReceta">@item.nombre</a><br />
+    }
+</div>

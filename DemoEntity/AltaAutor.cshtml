@@ -1,9 +1,53 @@
 ﻿@{
-    Page.Title = "Title goes here";
+    Page.Title = "AltaAutor";
     Layout = "LayoutLibros.cshtml";
+    
+     LibrosEntities le = new LibrosEntities();
+
+    if (IsPost)
+    {
+        if (Request["nombre"] != "")
+        {
+            bool existeAutor = false;
+            foreach (Autor item in le.Autor)
+            {
+                if (item.nombre == Request["nombre"])
+                {
+                    existeAutor = true;
+                }
+            }
+            if (!existeAutor)
+            {
+                Autor autorNuevo = new Autor();
+                autorNuevo.nombre = Request["nombre"];
+                autorNuevo.nacionalidad = Request["nacionalidad"];
+                le.Autor.Add(autorNuevo);
+                
+                le.SaveChanges();
+
+                Response.Redirect("AltaAutor.cshtml");
+            }
+        }
+        else
+        {
+            
+    <h1>DEBE COMPLETAR LOS CAMPOS</h1>
+        
+        }
+    }
 }
 
 
 <div>
+    <form action="#" method="post">
+        <label>Ingrese nombre</label>
+        <input type="text" name="nombre" value="" />
+        <br />
+
+        <label>Ingrese nacionalidad</label>
+        <input type="text" name="nacionalidad" value="" />
+
+        <input type="submit" name="btn" value="Agregar autor" />
+    </form>
     
 </div>

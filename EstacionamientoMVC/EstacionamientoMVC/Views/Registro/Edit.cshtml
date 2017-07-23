@@ -1,0 +1,65 @@
+﻿@model EstacionamientoMVC.Models.registros
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Editar</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Registros</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.vehiculo)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.patente)
+            @Html.HiddenFor(model => model.patente)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idParcela, "parcela")
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.parcela.idParcela)
+            @Html.HiddenFor(model => model.parcela.idParcela)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fechaIngreso)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.fechaIngreso)
+            @Html.HiddenFor(model => model.fechaIngreso)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fechaEgreso)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.fechaEgreso)
+            @Html.HiddenFor(model => model.fechaEgreso)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.monto)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.monto)
+            @Html.HiddenFor(model => model.monto)
+        </div>
+
+        <p>
+            <input type="submit" value="Enviar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver al indice", "Index")
+</div>

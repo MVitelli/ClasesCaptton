@@ -1,0 +1,129 @@
+﻿@{
+    Page.Title = "Title goes here";
+    Layout = "LayoutRecetas.cshtml";
+
+    RecetasEntities re = new RecetasEntities();
+
+    Receta miReceta = new Receta();
+    Ingrediente miIngrediente = new Ingrediente();
+    Ingrediente miIngrediente2 = new Ingrediente();
+    Ingrediente miIngrediente3 = new Ingrediente();
+    RecetaIngrediente relacion = new RecetaIngrediente();
+    RecetaIngrediente relacion2 = new RecetaIngrediente();
+    RecetaIngrediente relacion3 = new RecetaIngrediente();
+
+    if (IsPost)
+    {
+        miReceta.nombre = Request["nombre"];
+        miReceta.instrucciones = Request["instrucciones"];
+        re.Receta.Add(miReceta);
+        if (Request["cantidad"] != "")
+        {
+            miIngrediente.nombre = Request["ingrediente"];
+            Ingrediente consultaIngrediente = re.Ingrediente.SingleOrDefault(i => i.nombre == miIngrediente.nombre);
+            miIngrediente = consultaIngrediente;
+
+            relacion.cantidad = int.Parse(Request["cantidad"]);
+            relacion.unidadDeMedida = Request["unidadDeMedida"];
+            miReceta.RecetaIngrediente.Add(relacion);
+            miIngrediente.RecetaIngrediente.Add(relacion);
+            re.RecetaIngrediente.Add(relacion);
+
+        }
+
+        if (Request["cantidad2"] != "")
+        {
+            miIngrediente2.nombre = Request["ingrediente2"];
+            Ingrediente consultaIngrediente2 = re.Ingrediente.SingleOrDefault(i => i.nombre == miIngrediente2.nombre);
+            miIngrediente2 = consultaIngrediente2;
+
+            relacion2.cantidad = int.Parse(Request["cantidad2"]);
+            relacion2.unidadDeMedida = Request["unidadDeMedida2"];
+            miReceta.RecetaIngrediente.Add(relacion2);
+            miIngrediente2.RecetaIngrediente.Add(relacion2);
+            re.RecetaIngrediente.Add(relacion2);
+        }
+        if (Request["cantidad3"] != "")
+        {
+            miIngrediente3.nombre = Request["ingrediente3"];
+            Ingrediente consultaIngrediente3 = re.Ingrediente.SingleOrDefault(i => i.nombre == miIngrediente3.nombre);
+            miIngrediente3 = consultaIngrediente3;
+
+            relacion3.cantidad = int.Parse(Request["cantidad3"]);
+            relacion3.unidadDeMedida = Request["unidadDeMedida3"];
+            miReceta.RecetaIngrediente.Add(relacion3);
+            miIngrediente3.RecetaIngrediente.Add(relacion3);
+            re.RecetaIngrediente.Add(relacion3);
+        }
+
+        re.SaveChanges();
+
+        Response.Redirect("ListaRecetas.cshtml");
+    }
+    
+}
+
+
+<div>
+    <form action="#" method="post">
+        <br />  
+        <label>Nombre</label>
+        <input type="text" name="nombre" value="" />
+        <br />
+
+        <label>Ingrediente 1</label>
+        <select name="ingrediente">
+            @foreach (Ingrediente item in re.Ingrediente)
+            {
+                <option value=@item.nombre>@item.nombre</option>
+            }
+        </select>
+
+        <label>Cantidad</label>
+        <input type="text" name="cantidad" value="" />
+        <label>Unidad de Medida</label>
+        <input type="text" name="unidadDeMedida" value="" />
+
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Agregar otro</button>
+        <div id="demo" class="collapse">
+            <label>Ingrediente 2</label>
+            <select name="ingrediente2">
+                @foreach (Ingrediente item in re.Ingrediente)
+                {
+                    <option value=@item.nombre>@item.nombre</option>
+                }
+            </select>
+            <label>Cantidad</label>
+            <input type="text" name="cantidad2" value="" />
+            <label>Unidad de Medida</label>
+            <input type="text" name="unidadDeMedida2" value="" />
+
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo2">Agregar otro</button>
+            <div id="demo2" class="collapse">
+                <label>Ingrediente 3</label>
+                <select name="ingrediente3">
+                    @foreach (Ingrediente item in re.Ingrediente)
+                    {
+                        <option value=@item.nombre>@item.nombre</option>
+                    }
+                </select>
+                <label>Cantidad</label>
+                <input type="text" name="cantidad3" value="" />
+                <label>Unidad de Medida</label>
+                <input type="text" name="unidadDeMedida3" value="" />
+                <br />
+                <br />
+
+            </div>
+        </div>
+
+        <br />
+        <label>Instrucciones</label>
+        <textarea name="instrucciones"></textarea>
+
+        <br />
+        <br />
+
+        <input class="btn btn-success" type="submit" name="btn" value="Dar de Alta Receta" />
+    </form>
+</div>

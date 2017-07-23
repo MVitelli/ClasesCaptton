@@ -1,0 +1,44 @@
+﻿@model EstacionamientoMVC.Models.registros
+
+@{
+    ViewBag.Title = "Nuevo registro";
+    Layout = "../EstacionamientoLayout.cshtml"; 
+}
+
+<h2>Agregar registro</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>registros</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.patente, "vehiculo")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("patente", String.Empty)
+            @Html.ValidationMessageFor(model => model.patente)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idParcela, "parcela")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idParcela", String.Empty)
+            @Html.ValidationMessageFor(model => model.idParcela)
+        </div>
+
+
+        <p>
+            <input type="submit" value="Crear" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver al indice", "Index")
+</div>
+

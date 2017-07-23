@@ -1,0 +1,62 @@
+﻿@model EstacionamientoMVC.Models.registros
+
+@{
+    ViewBag.Title = "Eliminar registro";
+   
+}
+
+<h2>Disparking</h2>
+
+<h3>Estas seguro de desaparcar el vehiculo?</h3>
+<fieldset>
+    <legend>registros</legend>
+
+    <div class="display-label">
+       <strong>Patente</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vehiculo.patente)
+    </div>
+
+    <div class="display-label">
+        <strong>@Html.DisplayNameFor(model => model.parcela.idParcela)</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.parcela.idParcela)
+    </div>
+
+    <div class="display-label">
+        <strong>Fecha de Ingreso</strong> 
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fechaIngreso)
+    </div>
+
+    <div class="display-label">
+        <strong>Fecha de Salida</strong>
+    </div>
+    <div class="display-field">
+        @DateTime.Now
+    </div>
+    <div class="display-label">
+        <strong>Cantidad de horas</strong>
+    </div>
+    <div class="display-field">
+        @Session["horas"]
+    </div>
+    <div class="display-label">
+        <strong>Tarifa</strong>
+    </div>
+    <div class="display-field">
+        @Session["tarifa"]
+    </div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Egreso" />
+        |
+        @Html.ActionLink("Volver al indice", "Index")
+    </p>
+}

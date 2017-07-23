@@ -1,0 +1,83 @@
+﻿@model IEnumerable<EstacionamientoMVC.Models.registros>
+
+@{
+    ViewBag.Title = "Indice de registros";
+    Layout = "../EstacionamientoLayout.cshtml"; 
+}
+
+<h2>Lista de registros</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo registro", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.vehiculo.patente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.parcela.idParcela)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaIngreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaEgreso)
+        </th>
+        <th>Cantidad de horas
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.vehiculo.patente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parcela.idParcela)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaEgreso)
+            </td>
+            <td>
+                @if (item.fechaEgreso != null)
+                {
+                    @item.fechaEgreso.Value.Subtract(item.fechaIngreso).Hours
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.monto)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.fechaIngreso.ToString("yyyyMMddHHmmssfff") }) |
+                @if (item.fechaEgreso == null)
+                {
+                    @Html.ActionLink("Egreso del vehiculo", "Delete", new { id = item.fechaIngreso.ToString("yyyyMMddHHmmssfff") })
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+<br />
+<h2>Resumen del dia</h2>
+<div>
+    <form action="#" method="post">
+        <label>Seleccione una fecha</label>
+        <input type="date" name="resumen" value="" />
+        <input type="submit" name="btn" value="Consultar resumen" />
+    </form>
+</div>
+
+<h2>Total recaudado: $@Session["total"]</h2>
+<br />
+

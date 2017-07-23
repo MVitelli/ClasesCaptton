@@ -1,5 +1,5 @@
 ﻿@{
-    Page.Title = "Title goes here";
+    Page.Title = "AgregarLibro";
     Layout = "LayoutLibros.cshtml";
 
     LibrosEntities le = new LibrosEntities();
@@ -11,7 +11,14 @@
         librito.titulo = Request["title"];
         librito.fechaDeEdicion = DateTime.Parse(Request["fecha"]);
         librito.cantidadPaginas = int.Parse(Request["paginas"]);
+        int idAutor = int.Parse(Request["autor"]);
+        Autor autor = le.Autor.Find(idAutor);
+        int idGenero = int.Parse(Request["genero"]);
+        Genero genero = le.Genero.Find(idGenero);
+        int idEditorial = int.Parse(Request["editorial"]);
+        Editorial editorial = le.Editorial.Find(idEditorial);
 
+<<<<<<< HEAD
         int idAutor = int.Parse(Request["autor"]);
 
         Autor autor = le.Autor.Find(idAutor);
@@ -29,6 +36,11 @@
         edi.ubicacion = Request["lugar"];
         librito.Editorial = edi;
         //librito.Editorial.idEditorial = edi.idEditorial;
+=======
+        librito.Autor.Add(autor);
+        librito.Genero.Add(genero);
+        librito.Editorial = editorial;
+>>>>>>> 84b82ca1920a9852b8349b0322259765005db767
 
         
         
@@ -62,21 +74,32 @@
         <select name="editorial">
             @foreach (Editorial item in le.Editorial)
             {
-                <option value=@item.nombre>@item.nombre</option>
+                <option value=@item.idEditorial>@item.nombre</option>
             }
         </select>
+        <br />
 
         <label>Lugar de la editorial</label>
-        <input type="text" name="lugar" value="" />
+        <select>
+            @foreach (Editorial item in le.Editorial)
+            {
+                <option value=@item.ubicacion>@item.ubicacion</option>    
+            }
+        </select>
         <br />
 
         <label>Autor</label>
         <select name="autor">
             @foreach (Autor item in le.Autor)
             {
+<<<<<<< HEAD
                 <option value="@item.idAutor">@item.nombre</option>
+=======
+                <option value=@item.idAutor>@item.nombre</option>
+>>>>>>> 84b82ca1920a9852b8349b0322259765005db767
             }
         </select>
+        <br />
 
         <label>Genero</label>
         <select name="genero">

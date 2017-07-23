@@ -1,0 +1,33 @@
+﻿@{
+    Page.Title = "Ver Receta";
+    Layout = "LayoutRecetas.cshtml";
+
+    RecetasEntities re = new RecetasEntities();
+    int i = 1;
+    int idReceta = int.Parse(Request["id"]);
+    Receta miReceta = new Receta();
+
+    miReceta = re.Receta.Find(idReceta);
+}
+
+
+<div>
+    <label>Nombre de la receta</label>
+    <h4>@miReceta.nombre</h4>
+    <br />
+    <label>Ingredientes (cantidad y unidad de medida)</label>
+    <br />
+       
+    @foreach (RecetaIngrediente item in miReceta.RecetaIngrediente)
+        {
+            
+           <h6> @i ) @item.Ingrediente.nombre - @item.cantidad @item.unidadDeMedida </h6>
+            i++;
+        }
+    <br />
+    <label>Instrucciones</label>
+    <h5>@miReceta.instrucciones</h5>
+    <br />
+
+    <a class="btn btn-primary" href="EliminarReceta.cshtml?id=@miReceta.idReceta">Eliminar receta</a>
+</div>

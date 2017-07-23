@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EstacionamientoMVCModelStoreContainer" CdmEntityContainer="EstacionamientoMVCEntities">
+    <EntitySetMapping Name="parcela">
+      <EntityTypeMapping TypeName="EstacionamientoMVCModel.parcela">
+        <MappingFragment StoreEntitySet="parcela">
+          <ScalarProperty Name="idParcela" ColumnName="idParcela" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="registros">
+      <EntityTypeMapping TypeName="EstacionamientoMVCModel.registros">
+        <MappingFragment StoreEntitySet="registros">
+          <ScalarProperty Name="patente" ColumnName="patente" />
+          <ScalarProperty Name="idParcela" ColumnName="idParcela" />
+          <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
+          <ScalarProperty Name="fechaEgreso" ColumnName="fechaEgreso" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoDeVehiculo">
+      <EntityTypeMapping TypeName="EstacionamientoMVCModel.tipoDeVehiculo">
+        <MappingFragment StoreEntitySet="tipoDeVehiculo">
+          <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="tarifa" ColumnName="tarifa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vehiculo">
+      <EntityTypeMapping TypeName="EstacionamientoMVCModel.vehiculo">
+        <MappingFragment StoreEntitySet="vehiculo">
+          <ScalarProperty Name="patente" ColumnName="patente" />
+          <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

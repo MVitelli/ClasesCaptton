@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f8f9f40a8e204026b9d5e6f1d9d1bbcb" Name="Diagram1">
+        <EntityTypeShape EntityType="EstacionamientoMVCModel.parcela" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstacionamientoMVCModel.registros" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstacionamientoMVCModel.tipoDeVehiculo" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstacionamientoMVCModel.vehiculo" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="EstacionamientoMVCModel.FK_registros_parcela" ManuallyRouted="false" />
+        <AssociationConnector Association="EstacionamientoMVCModel.FK_registros_vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="EstacionamientoMVCModel.FK_vehiculo_tipoDeVehiculo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

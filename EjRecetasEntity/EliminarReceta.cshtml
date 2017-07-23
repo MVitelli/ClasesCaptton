@@ -1,0 +1,19 @@
+﻿@{
+    Page.Title = "Eliminar receta";
+    Layout = "LayoutRecetas.cshtml";
+
+    RecetasEntities re = new RecetasEntities();
+    int idReceta = int.Parse(Request["id"]);
+    Receta miReceta = re.Receta.Find(idReceta);
+
+    miReceta.RecetaIngrediente.Clear();
+    re.Receta.Remove(miReceta);
+    
+    re.SaveChanges();
+    Response.Redirect("ListaRecetas.cshtml");
+}
+
+
+<div>
+   
+</div>

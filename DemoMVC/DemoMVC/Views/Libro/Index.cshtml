@@ -1,0 +1,110 @@
+﻿@model IEnumerable<DemoMVC.Models.Libro>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<h2>Listado de Libros</h2>
+
+<p>
+    @Html.ActionLink("Agregar Libro", "Create")
+</p>
+<table class="table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Autor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaDeEdicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Editorial.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidadPaginas)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.titulo)
+            </td>
+            <td>
+                <ul>
+                    @foreach (var item2 in item.Autor)
+                    {
+                        <li>@item2.nombre</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    @foreach (var item2 in item.Genero)
+                    {
+                        <li>@item2.nombre</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaDeEdicion.Day)/
+                @Html.DisplayFor(modelItem => item.fechaDeEdicion.Month)/
+                @Html.DisplayFor(modelItem => item.fechaDeEdicion.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Editorial.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantidadPaginas)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ISBN }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ISBN }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ISBN })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    <br />
+    <h2>FILTROS</h2>
+    <label>Filtrar por editorial</label>
+    <form action="#" method="post">
+        @Html.DropDownList("edi", "Seleccione editorial")
+        <input type="submit" name="btn" value="Buscar editorial" />
+    </form>
+    <br />
+
+    <label>Filtrar por autor</label>
+    <form action="#" method="post">
+        @Html.DropDownList("aut", "Seleccione autor")
+        <input type="submit" name="btn2" value="Buscar autor" />
+    </form>
+    <br />
+
+    <label>Filtrar por genero</label>
+    <form action="#" method="post">
+        @Html.DropDownList("gen", "Seleccione genero")
+        <input type="submit" name="btn3" value="Buscar genero" />
+    </form>
+    <br />
+</div>
