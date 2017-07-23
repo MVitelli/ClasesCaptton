@@ -22,6 +22,8 @@ public partial class Autor
     public string nacionalidad { get; set; }
 
     public virtual ICollection<Libro> Libro { get; set; }
+
+    
 }
 
 public partial class Editorial

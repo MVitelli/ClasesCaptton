@@ -12,14 +12,28 @@
         librito.fechaDeEdicion = DateTime.Parse(Request["fecha"]);
         librito.cantidadPaginas = int.Parse(Request["paginas"]);
 
+        int idAutor = int.Parse(Request["autor"]);
+
+        Autor autor = le.Autor.Find(idAutor);
+
+        librito.Autor.Add(autor);       
+
+        int idGenero = int.Parse(Request["genero"]);
+
+        Genero genero = le.Genero.Find(idGenero);
+
+        librito.Genero.Add(genero);
+        
         Editorial edi = new Editorial();
         edi.nombre = Request["editorial"];
         edi.ubicacion = Request["lugar"];
         librito.Editorial = edi;
         //librito.Editorial.idEditorial = edi.idEditorial;
 
+        
+        
         le.Libro.Add(librito);
-
+        
         le.SaveChanges();
 
         Response.Redirect("Index.cshtml");
@@ -60,7 +74,7 @@
         <select name="autor">
             @foreach (Autor item in le.Autor)
             {
-                <option value=@item.nombre>@item.nombre</option>
+                <option value="@item.idAutor">@item.nombre</option>
             }
         </select>
 
@@ -68,7 +82,7 @@
         <select name="genero">
             @foreach (Genero item in le.Genero)
             {
-                <option value=@item.nombre>@item.nombre</option>
+                <option value=@item.idGenero>@item.nombre</option>
             }
         </select>
         <input type="submit" name="btn" value="Nuevo Libro" />
