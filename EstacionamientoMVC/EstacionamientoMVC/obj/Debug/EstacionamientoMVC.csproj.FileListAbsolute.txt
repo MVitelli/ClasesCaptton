@@ -27,3 +27,32 @@ C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EstacionamientoMVC\Estacio
 C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EstacionamientoMVC\EstacionamientoMVC\obj\Debug\EstacionamientoMVC.csprojResolveAssemblyReference.cache
 C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EstacionamientoMVC\EstacionamientoMVC\obj\Debug\EstacionamientoMVC.dll
 C:\Users\Alumno\Documents\Visual Studio 2012\Projects\EstacionamientoMVC\EstacionamientoMVC\obj\Debug\EstacionamientoMVC.pdb
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\EstacionamientoMVC.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\EstacionamientoMVC.pdb
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\EntityFramework.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\Microsoft.Web.Infrastructure.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\Newtonsoft.Json.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Net.Http.Formatting.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.Helpers.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.Http.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.Http.WebHost.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.Mvc.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.Razor.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.WebPages.Deployment.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.WebPages.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.WebPages.Razor.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\EntityFramework.xml
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\Newtonsoft.Json.xml
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Net.Http.Formatting.xml
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.Helpers.xml
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.Http.xml
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.Http.WebHost.xml
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.Mvc.xml
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.Razor.xml
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.WebPages.xml
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.WebPages.Deployment.xml
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\bin\System.Web.WebPages.Razor.xml
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\obj\Debug\EstacionamientoMVC.dll
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\obj\Debug\EstacionamientoMVC.pdb
+M:\Trabajo\ClasesCaptton-master\EstacionamientoMVC\EstacionamientoMVC\obj\Debug\EstacionamientoMVC.csprojResolveAssemblyReference.cache

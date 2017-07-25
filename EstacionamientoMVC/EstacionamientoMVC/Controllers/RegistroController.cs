@@ -153,24 +153,27 @@ namespace EstacionamientoMVC.Controllers
 
             int cantVecesEstacionoEnElMes = db.registros.Where(r => r.patente == registros.patente && r.fechaIngreso.Month == registros.fechaIngreso.Month).Count();
 
+            double monto = (double)Session["tarifa"];
 
             if (cantVecesEstacionoEnElMes >= 10 && (registros.fechaIngreso.DayOfWeek == DayOfWeek.Saturday || registros.fechaIngreso.DayOfWeek == DayOfWeek.Sunday))
             {
-                double monto = (double)Session["tarifa"];
                 Session["tarifa"] = monto * 0.75;
             }
             else
             {
                 if (cantVecesEstacionoEnElMes < 10 && (registros.fechaIngreso.DayOfWeek == DayOfWeek.Saturday || registros.fechaIngreso.DayOfWeek == DayOfWeek.Sunday))
                 {
-                    double monto = (double)Session["tarifa"];
                     Session["tarifa"] = monto * 0.90;
                 }
                 else
-                {
-                    double monto = (double)Session["tarifa"];
-                    Session["tarifa"] = monto * 0.85;
-                }
+                    if (cantVecesEstacionoEnElMes > 10)
+                    {
+                        Session["tarifa"] = monto * 0.85;
+                    }
+                    else
+                    {
+                        Session["tarifa"] = monto;
+                    }
             }
             registros.monto = (double)Session["tarifa"];
 

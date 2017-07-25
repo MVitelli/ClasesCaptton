@@ -18,34 +18,10 @@
         int idEditorial = int.Parse(Request["editorial"]);
         Editorial editorial = le.Editorial.Find(idEditorial);
 
-<<<<<<< HEAD
-        int idAutor = int.Parse(Request["autor"]);
 
-        Autor autor = le.Autor.Find(idAutor);
 
-        librito.Autor.Add(autor);       
-
-        int idGenero = int.Parse(Request["genero"]);
-
-        Genero genero = le.Genero.Find(idGenero);
-
-        librito.Genero.Add(genero);
-        
-        Editorial edi = new Editorial();
-        edi.nombre = Request["editorial"];
-        edi.ubicacion = Request["lugar"];
-        librito.Editorial = edi;
-        //librito.Editorial.idEditorial = edi.idEditorial;
-=======
-        librito.Autor.Add(autor);
-        librito.Genero.Add(genero);
-        librito.Editorial = editorial;
->>>>>>> 84b82ca1920a9852b8349b0322259765005db767
-
-        
-        
         le.Libro.Add(librito);
-        
+
         le.SaveChanges();
 
         Response.Redirect("Index.cshtml");
@@ -92,11 +68,7 @@
         <select name="autor">
             @foreach (Autor item in le.Autor)
             {
-<<<<<<< HEAD
                 <option value="@item.idAutor">@item.nombre</option>
-=======
-                <option value=@item.idAutor>@item.nombre</option>
->>>>>>> 84b82ca1920a9852b8349b0322259765005db767
             }
         </select>
         <br />
