@@ -1,0 +1,61 @@
+﻿@model TF_Base.Models.Vuelos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Vuelos</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Conexiones.CiudadOrigen)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Conexiones.CiudadOrigen)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ConexionID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ConexionID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.numeroVuelo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.numeroVuelo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fecha)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fecha)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.asientosDisponibles)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.asientosDisponibles)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.capacidad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.capacidad)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

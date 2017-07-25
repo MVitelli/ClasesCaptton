@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TF_Base.Models.Vuelos>
+@{
+    ViewBag.Title = "Encargado";
+}
+
+<h2>Encargado</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Conexiones.CiudadOrigen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConexionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numeroVuelo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.asientosDisponibles)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.capacidad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Conexiones.CiudadOrigen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConexionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numeroVuelo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.asientosDisponibles)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.capacidad)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.numeroVuelo}) |
+            @Html.ActionLink("Details", "Details", new {  id=item.numeroVuelo}) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.numeroVuelo})
+        </td>
+    </tr>
+}
+
+</table>

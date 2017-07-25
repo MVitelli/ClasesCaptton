@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TF_Base.Models.Boletos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "../_LayoutAero.cshtml";
+}
+
+<h2>Boletos</h2>
+
+<p>
+    @Html.ActionLink("Agregar Boleto", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Vuelos.AerolineaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.dni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado.nombreEstado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idBoleto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vuelos.AerolineaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.dni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado.nombreEstado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idBoleto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idBoleto }) |
+            @Html.ActionLink("Details", "Details", new {id=item.idBoleto}) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idBoleto})
+        </td>
+    </tr>
+}
+
+</table>

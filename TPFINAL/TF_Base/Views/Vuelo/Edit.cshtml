@@ -1,0 +1,76 @@
+﻿@model TF_Base.Models.Vuelos
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Vuelos</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AerolineaID, "Conexiones")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("AerolineaID", String.Empty)
+            @Html.ValidationMessageFor(model => model.AerolineaID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ConexionID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ConexionID)
+            @Html.ValidationMessageFor(model => model.ConexionID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.numeroVuelo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.numeroVuelo)
+            @Html.ValidationMessageFor(model => model.numeroVuelo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fecha)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fecha)
+            @Html.ValidationMessageFor(model => model.fecha)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.asientosDisponibles)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.asientosDisponibles)
+            @Html.ValidationMessageFor(model => model.asientosDisponibles)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.capacidad)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.capacidad)
+            @Html.ValidationMessageFor(model => model.capacidad)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
