@@ -1,0 +1,47 @@
+﻿@model TF_Base.Models.Boletos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Boletos</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Vuelos.AerolineaID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vuelos.AerolineaID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cliente.dni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cliente.dni)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Estado.nombreEstado)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Estado.nombreEstado)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idBoleto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idBoleto)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

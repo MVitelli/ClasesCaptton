@@ -1,0 +1,43 @@
+﻿@model TF_Base.Models.Boletos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Boletos</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Vuelos.AerolineaID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vuelos.AerolineaID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cliente.dni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cliente.dni)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Estado.nombreEstado)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Estado.nombreEstado)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idBoleto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idBoleto)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

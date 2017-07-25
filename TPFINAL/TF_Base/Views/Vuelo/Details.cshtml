@@ -1,0 +1,57 @@
+﻿@model TF_Base.Models.Vuelos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Vuelos</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Conexiones.CiudadOrigen)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Conexiones.CiudadOrigen)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ConexionID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ConexionID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.numeroVuelo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.numeroVuelo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fecha)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fecha)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.asientosDisponibles)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.asientosDisponibles)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.capacidad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.capacidad)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

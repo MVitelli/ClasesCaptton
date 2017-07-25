@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8663a69096bb40d0a11f0397174d5908" Name="Diagram1">
+        <EntityTypeShape EntityType="SistemaVuelosModel.Aerolineas" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaVuelosModel.Boletos" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaVuelosModel.Cliente" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaVuelosModel.Conexiones" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaVuelosModel.Empleados" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaVuelosModel.Estado" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaVuelosModel.Usuario" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaVuelosModel.Vuelos" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="SistemaVuelosModel.FK__Conexione__Aerol__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaVuelosModel.FK_Empleados_Aerolineas" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaVuelosModel.FK_Boletos_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaVuelosModel.FK_Boletos_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaVuelosModel.FK_Boletos_Vuelos" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaVuelosModel.FK_Cliente_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaVuelosModel.FK_Vuelos_Conexiones" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaVuelosModel.FK_Empleados_Usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

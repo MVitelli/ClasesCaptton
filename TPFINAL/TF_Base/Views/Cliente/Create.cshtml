@@ -1,0 +1,37 @@
+﻿@model TF_Base.Models.Cliente
+
+@{
+    ViewBag.Title = "Alta Cliente";
+}
+
+<h2>Dar alta cliente</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Cliente</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.dni,"dni")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.dni)
+            @Html.ValidationMessageFor(model => model.dni)
+        </div>
+
+        <p>
+            <input type="submit" value="Dar alta" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

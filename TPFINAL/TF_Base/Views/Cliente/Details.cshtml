@@ -1,0 +1,29 @@
+﻿@model TF_Base.Models.Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Cliente</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Usuario.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Usuario.nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dni)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
