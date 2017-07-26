@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Cliente</a>
+                </div>
+                <ul class="nav navbar-nav">
+                  <li><a href="../Boleto/ListaBoletos">Reservas</a></li>
+                    <li><a href="../Boleto/Historial">Historial de viajes</a></li>
+                </ul>
+                <p class="nav navbar-nav navbar-right">
+                    @if (WebSecurity.CurrentUserId != -1)
+                    {   
+                        @Html.Label(WebSecurity.CurrentUserName)
+                        <a href="../Account/Logout">Logout</a>
+                    }
+
+                </p>
+            </div>
+        </nav>
+        @RenderBody()
+    </div>
+</body>
+</html>

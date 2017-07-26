@@ -2,37 +2,32 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "../_LayoutAero.cshtml";
+    Layout = "../_LayoutEmpleado.cshtml";
 }
 
 <h2>Lista de vuelos</h2>
 
 <p>
-    @Html.ActionLink("Agregar vuelo", "Create")
+    @if (Roles.IsUserInRole("EncargadoAerolinea"))
+    {
+        @Html.ActionLink("Agregar vuelo", "Create", null, new { @class = "btn btn-default" })
+    }
 </p>
 <table class="table table-striped">
     <tr>
-        <th>
-            Aerolinea
+        <th>Aerolinea
         </th>
         <th>Lugar de origen
         </th>
         <th>Lugar de destino 
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConexionID)
+        <th>N° vuelo - Conexion ID
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.numeroVuelo)
+        <th>Fecha
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fecha)
+        <th>Asientos disponibles
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.asientosDisponibles)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.capacidad)
+        <th>Capacidad
         </th>
         <th></th>
     </tr>
@@ -41,21 +36,19 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem=>item.AerolineaID)
+                @Html.DisplayFor(modelItem => item.AerolineaID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Conexiones.CiudadOrigen) -
-                @Html.DisplayFor(modelItem =>item.Conexiones.PaisOrigen)
+                @Html.DisplayFor(modelItem => item.Conexiones.PaisOrigen)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Conexiones.CiudadDestino) - 
-                @Html.DisplayFor(modelItem =>item.Conexiones.PaisDestino)
+                @Html.DisplayFor(modelItem => item.Conexiones.PaisDestino)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.numeroVuelo) -
                 @Html.DisplayFor(modelItem => item.ConexionID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.numeroVuelo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.fecha.Day)/
@@ -69,9 +62,10 @@
                 @Html.DisplayFor(modelItem => item.capacidad)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.numeroVuelo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.numeroVuelo  }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.numeroVuelo })
+                @if (Roles.IsUserInRole("EncargadoAerolinea"))
+                {
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.numeroVuelo },new{@class="btn btn-danger"})
+                }
             </td>
         </tr>
     }

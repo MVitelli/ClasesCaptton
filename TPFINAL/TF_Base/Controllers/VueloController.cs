@@ -17,7 +17,7 @@ namespace TF_Base.Controllers
 
         //
         // GET: /Vuelo/
-
+        [Authorize(Roles = "EmpleadoAerolinea,EmpleadoAgencia,EncargadoAerolinea")]
         public ActionResult Index()
         {
             var vuelos = db.Vuelos.Include(v => v.Conexiones);
@@ -39,9 +39,9 @@ namespace TF_Base.Controllers
                 {
                     return View(vuelos.ToList());
                 }
-                return View(vuelos.Where(v=>v.AerolineaID==busqueda).ToList());
+                return View(vuelos.Where(v => v.AerolineaID == busqueda).ToList());
             }
-          
+
             return View(vuelos.ToList());
 
         }
@@ -81,19 +81,24 @@ namespace TF_Base.Controllers
         {
             int idUsuario = WebSecurity.CurrentUserId;
             Empleados empleado = db.Empleados.SingleOrDefault(e => e.idUsuario == idUsuario);
+            ViewBag.ConexionID = new SelectList(db.Conexiones.Where(c => c.AerolineaID == empleado.AerolineaID), "ConexionID", "infoConexion", vuelos.AerolineaID);
             if (ModelState.IsValid)
             {
-                vuelos.asientosDisponibles = vuelos.capacidad;
-
-                vuelos.AerolineaID = empleado.AerolineaID;
-                db.Vuelos.Add(vuelos);
+                if (vuelos.fecha < DateTime.Now)
+                {
+                    ModelState.AddModelError("", "No puede ingresar fechas anteriores a hoy");
+                    return View();
+                }
+                else
+                {
+                    vuelos.asientosDisponibles = vuelos.capacidad;
+                    vuelos.AerolineaID = empleado.AerolineaID;
+                    db.Vuelos.Add(vuelos);
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-
-
-            ViewBag.ConexionID = new SelectList(db.Conexiones.Where(c => c.AerolineaID == empleado.AerolineaID), "AerolineaID", "CiudadOrigen", vuelos.AerolineaID);
+           
             return View(vuelos);
         }
 
@@ -134,6 +139,8 @@ namespace TF_Base.Controllers
         public ActionResult Delete(int id = 0)
         {
             Vuelos vuelos = db.Vuelos.Find(id);
+            Session["ocupados"] = vuelos.capacidad - vuelos.asientosDisponibles;
+            ViewBag.error = false;
             if (vuelos == null)
             {
                 return HttpNotFound();
@@ -149,9 +156,18 @@ namespace TF_Base.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Vuelos vuelos = db.Vuelos.Find(id);
-            db.Vuelos.Remove(vuelos);
+            ViewBag.error = false;
+            if (vuelos.asientosDisponibles == vuelos.capacidad)
+            {
+                db.Vuelos.Remove(vuelos);
+            }
+            else
+            {
+                ViewBag.error = true;
+            }
+            
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return View("Delete");
         }
 
         protected override void Dispose(bool disposing)

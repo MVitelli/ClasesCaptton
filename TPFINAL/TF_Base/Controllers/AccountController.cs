@@ -32,7 +32,17 @@ namespace mvcStore.Controllers
                 {
                     if (Roles.IsUserInRole("Cliente"))
                     {
-                        return RedirectToAction("Index", "Boleto");
+                        int id = WebSecurity.CurrentUserId;
+                        List<Boletos> listaBoletos = bd.Boletos.Where(b => b.Cliente.idUsuario == id).ToList();
+                        foreach (var item in listaBoletos)
+                        {
+                            if (item.idEstado == 1) //pregunto si el boleto está en reservado
+                            {
+                                item.idEstado = 3; //lo paso a cancelado porque ya pasó esa fecha
+                            }
+                        }
+                        bd.SaveChanges();
+                        return RedirectToAction("ListaBoletos", "Boleto");
                     }
                     else
                     {
@@ -71,9 +81,16 @@ namespace mvcStore.Controllers
             {
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(registro.UserName, registro.Password, new { email = registro.UserEmail, dni=registro.Dni, nombre=registro.Nombre, apellido=registro.Apellido });
+                    WebSecurity.CreateUserAndAccount(registro.UserName, registro.Password, new { email = registro.UserEmail, dni = registro.Dni, nombre = registro.Nombre, apellido = registro.Apellido });
                     WebSecurity.Login(registro.UserName, registro.Password);
                     Roles.AddUserToRole(registro.UserName, "Cliente");
+                    int idUsuarioACrear = WebSecurity.GetUserId(registro.UserName);
+                    Cliente buscado = bd.Cliente.Find(registro.Dni);
+                    if (buscado != null)
+                    {
+                        buscado.idUsuario = idUsuarioACrear;
+                    }
+                    bd.SaveChanges();
                     return RedirectToAction("ListaBoletos", "Boleto");
                 }
                 catch (MembershipCreateUserException e)

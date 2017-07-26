@@ -2,10 +2,11 @@
 
 @{
     ViewBag.Title = "Login";
-    Layout = "../_LayoutAero.cshtml";
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 }
 
-<h2>Login</h2>
+<h2>Sistema de vuelos</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -38,6 +39,8 @@
             @Html.ValidationMessageFor(f => f.RememberMe)
         </div>
 
-        <input type="submit" value="Guardar" />
+        <input type="submit" value="Ingresar" />
     </fieldset>
 }
+<br />
+<a class="btn btn-default" href="../Account/Register">Registrarse</a>

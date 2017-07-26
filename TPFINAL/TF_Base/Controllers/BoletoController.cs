@@ -17,7 +17,7 @@ namespace TF_Base.Controllers
 
         //
         // GET: /Boleto/
-        [Authorize(Roles="EmpleadoAgencia,EmpleadoAerolinea")]
+        [Authorize(Roles = "EmpleadoAgencia,EmpleadoAerolinea")]
         public ActionResult Index()
         {
             if (Roles.IsUserInRole("EmpleadoAgencia"))
@@ -79,78 +79,77 @@ namespace TF_Base.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Boletos boletos)
         {
-            if (ModelState.IsValid)
-            {
-                db.Boletos.Add(boletos);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
             ViewBag.dni = new SelectList(db.Cliente, "dni", "dni", boletos.dni);
             ViewBag.idEstado = new SelectList(db.Estado, "idEstado", "nombreEstado", boletos.idEstado);
             ViewBag.numeroVuelo = new SelectList(db.Vuelos, "numeroVuelo", "infoVuelo", boletos.numeroVuelo);
-            return View(boletos);
-        }
-
-        //
-        // GET: /Boleto/Edit/5
-
-        public ActionResult Edit(int id = 0)
-        {
-            Boletos boletos = db.Boletos.Find(id);
-            if (boletos == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.dni = new SelectList(db.Cliente, "dni", "dni", boletos.dni);
-            ViewBag.idEstado = new SelectList(db.Estado, "idEstado", "nombreEstado", boletos.idEstado);
-            ViewBag.numeroVuelo = new SelectList(db.Vuelos, "numeroVuelo", "AerolineaID", boletos.numeroVuelo);
-            return View(boletos);
-        }
-
-        //
-        // POST: /Boleto/Edit/5
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Boletos boletos)
-        {
             if (ModelState.IsValid)
             {
-                db.Entry(boletos).State = EntityState.Modified;
+                Vuelos vueloActual = db.Vuelos.Find(boletos.numeroVuelo);
+
+                if (vueloActual.asientosDisponibles > 0)
+                {
+                    db.Boletos.Add(boletos);
+                    vueloActual.asientosDisponibles -= 1;
+                }
+                else
+                {
+                    ModelState.AddModelError("", "No hay lugar en el vuelo");
+                    return View();
+                }
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.dni = new SelectList(db.Cliente, "dni", "dni", boletos.dni);
-            ViewBag.idEstado = new SelectList(db.Estado, "idEstado", "nombreEstado", boletos.idEstado);
-            ViewBag.numeroVuelo = new SelectList(db.Vuelos, "numeroVuelo", "AerolineaID", boletos.numeroVuelo);
             return View(boletos);
         }
 
         //
-        // GET: /Boleto/Delete/5
+        // GET: /Boleto/Confirmar/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Confirmar(int id = 0)
         {
             Boletos boletos = db.Boletos.Find(id);
             if (boletos == null)
             {
                 return HttpNotFound();
             }
+            boletos.idEstado = 2; //lo paso a confirmado
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        //
+        // GET: /Boleto/Cancelar/5
+
+        public ActionResult Cancelar(int id = 0)
+        {
+            Boletos boletos = db.Boletos.Find(id);
+            if (boletos == null)
+            {
+                return HttpNotFound();
+            }
+            boletos.idEstado = 3; //lo paso a cancelado
+            Vuelos vueloActual = db.Vuelos.Find(boletos.numeroVuelo);
+            vueloActual.asientosDisponibles += 1;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult ListaBoletos()
+        {
+            int id = WebSecurity.CurrentUserId;
+            var boletos = db.Boletos.Where(b => b.Cliente.idUsuario == id && b.Vuelos.fecha >= DateTime.Now);
             return View(boletos);
         }
 
-        //
-        // POST: /Boleto/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Historial()
         {
-            Boletos boletos = db.Boletos.Find(id);
-            db.Boletos.Remove(boletos);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            int id = WebSecurity.CurrentUserId;
+            var historial = db.Boletos.Where(h => h.Cliente.idUsuario == id && h.Vuelos.fecha < DateTime.Now);
+            return View(historial);
         }
 
         protected override void Dispose(bool disposing)

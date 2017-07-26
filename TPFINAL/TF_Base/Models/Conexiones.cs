@@ -27,7 +27,7 @@ namespace TF_Base.Models
         public string PaisDestino { get; set; }
         public System.TimeSpan HorarioSalida { get; set; }
         public System.TimeSpan HorarioLlegada { get; set; }
-        public string infoConexion { get { return this.CiudadOrigen + "-" + this.CiudadDestino; }}
+        public string infoConexion { get { return this.HorarioSalida+ " " +this.CiudadOrigen + "- " + this.HorarioLlegada+" "+ this.CiudadDestino; }}
         public virtual Aerolineas Aerolineas { get; set; }
         public virtual ICollection<Vuelos> Vuelos { get; set; }
     }

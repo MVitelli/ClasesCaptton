@@ -2,17 +2,16 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "../_LayoutEmpleado.cshtml";
 }
-
-<h2>Index</h2>
+<h2>Listado de clientes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Agregar cliente", "Create", null, new { @class = "btn btn-default" })
 </p>
-<table>
+<table class="table table-bordered">
     <tr>
-        <th>
-            Username
+        <th>Username
         </th>
         <th>
             @Html.DisplayNameFor(model => model.dni)
@@ -20,20 +19,20 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dni)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.dni  }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.dni  }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.dni })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dni)
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "Details", new { id = item.dni }, new {@class="btn btn-warning" }) 
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.dni },new {@class="btn btn-danger" })
+            </td>
+        </tr>
+    }
 
 </table>

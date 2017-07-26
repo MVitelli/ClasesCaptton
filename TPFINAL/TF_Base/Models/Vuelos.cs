@@ -25,6 +25,7 @@ namespace TF_Base.Models
         public System.DateTime fecha { get; set; }
         public int asientosDisponibles { get; set; }
         public int capacidad { get; set; }
+        public string fechaParaMostrar { get { return this.fecha.Day + "/" + this.fecha.Month + "/" + this.fecha.Year; } }
         public string infoVuelo { get {return "Fecha: "+ this.fecha.Day +"/"+this.fecha.Month+"/"+this.fecha.Year+" - Aerolinea: "+ this.AerolineaID+ " - Numero de vuelo: "+ this.numeroVuelo +" - Numero de conexion: "+ this.ConexionID +" - Ciudad origen: "+this.Conexiones.CiudadOrigen+ " - Ciudad destino: "+this.Conexiones.CiudadDestino ; } }
     
         public virtual ICollection<Boletos> Boletos { get; set; }

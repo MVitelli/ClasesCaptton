@@ -287,23 +287,20 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Vuelo\Index.cshtml" />
-    <Content Include="Views\Vuelo\Details.cshtml" />
     <Content Include="Views\Vuelo\Create.cshtml" />
-    <Content Include="Views\Vuelo\Edit.cshtml" />
     <Content Include="Views\Vuelo\Delete.cshtml" />
     <Content Include="Views\Boleto\Index.cshtml" />
     <Content Include="Views\Boleto\Details.cshtml" />
     <Content Include="Views\Boleto\Create.cshtml" />
-    <Content Include="Views\Boleto\Edit.cshtml" />
-    <Content Include="Views\Boleto\Delete.cshtml" />
-    <Content Include="Views\Vuelo\Encargado.cshtml" />
-    <Content Include="Views\_LayoutAero.cshtml" />
+    <Content Include="Views\_LayoutEmpleado.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Cliente\Details.cshtml" />
     <Content Include="Views\Cliente\Create.cshtml" />
     <Content Include="Views\Cliente\Edit.cshtml" />
     <Content Include="Views\Cliente\Delete.cshtml" />
     <Content Include="Views\Boleto\ListaBoletos.cshtml" />
+    <Content Include="Views\_LayoutCliente.cshtml" />
+    <Content Include="Views\Boleto\Historial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
