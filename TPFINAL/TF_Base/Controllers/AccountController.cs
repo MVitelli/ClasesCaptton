@@ -30,35 +30,44 @@ namespace mvcStore.Controllers
                 bool res = WebSecurity.Login(login.UserName, login.Password, login.RememberMe);
                 if (res)
                 {
-                    if (Roles.IsUserInRole("Cliente"))
-                    {
-                        int id = WebSecurity.CurrentUserId;
-                        List<Boletos> listaBoletos = bd.Boletos.Where(b => b.Cliente.idUsuario == id).ToList();
-                        foreach (var item in listaBoletos)
-                        {
-                            if (item.idEstado == 1) //pregunto si el boleto está en reservado
-                            {
-                                item.idEstado = 3; //lo paso a cancelado porque ya pasó esa fecha
-                            }
-                        }
-                        bd.SaveChanges();
-                        return RedirectToAction("ListaBoletos", "Boleto");
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Vuelo");
-                    }
+                    return RedirectToAction("Index", "Vuelo");
+
                 }
             }
 
             ModelState.AddModelError("", "Error al logearse");
-            return View(login);
+            return View();
         }
 
         //
         // GET: /Account/Logout
         public ActionResult Logout()
         {
+
+            if (!Roles.IsUserInRole("Cliente"))
+            {
+                int id = WebSecurity.CurrentUserId;
+
+                Empleados empleado = bd.Empleados.SingleOrDefault(e => e.idUsuario == id);
+
+                string fechaEgreso = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                string[] roles = Roles.GetRolesForUser();
+                string log = "";
+                if (Roles.IsUserInRole("EmpleadoAgencia"))
+                {
+                    log = "[" + fechaEgreso + "] " + "Cierre Sesión - " + roles.First() + " " + empleado.Usuario.apellido + " Agencia";
+                }
+                else
+                {
+                    log = "[" + fechaEgreso + "] " + "Cierre Sesión - " + roles.First() + " " + empleado.Usuario.apellido + " " + empleado.Aerolineas.Nombre;
+
+                }
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alumno\Desktop\Log.txt", true))
+                {
+                    file.WriteLine(log);
+                }
+            }
+
             WebSecurity.Logout();
             return RedirectToAction("Login", "Account");
         }

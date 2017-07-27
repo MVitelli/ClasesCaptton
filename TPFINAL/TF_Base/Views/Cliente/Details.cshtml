@@ -10,20 +10,28 @@
     <legend>Cliente</legend>
 
     <div class="display-label">
-         Nombre de usuario
+        <strong>Nombre de usuario</strong>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Usuario.nombre)
-    </div>
+    @if (Model.idUsuario != null)
+    {
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Usuario.nombre)
+        </div>
+    }
+    else
+    {
+        <div class="display-field">
+            <label>No tiene usuario</label>
+        </div>
+    }
 
     <div class="display-label">
-         DNI
+        <strong>DNI</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.dni)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id=Model.dni }) |
     @Html.ActionLink("Volver a la lista", "Index")
 </p>

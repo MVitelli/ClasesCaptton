@@ -17,12 +17,49 @@ namespace TF_Base.Controllers
 
         //
         // GET: /Vuelo/
-        [Authorize(Roles = "EmpleadoAerolinea,EmpleadoAgencia,EncargadoAerolinea")]
         public ActionResult Index()
         {
-            var vuelos = db.Vuelos.Include(v => v.Conexiones);
-            ViewBag.aero = new SelectList(db.Aerolineas, "AerolineaID", "infoAerolinea");
-            return View(vuelos.ToList());
+            int id = WebSecurity.CurrentUserId;
+            if (Roles.IsUserInRole("Cliente"))
+            {
+                List<Boletos> listaBoletos = db.Boletos.Where(b => b.Cliente.idUsuario == id).ToList();
+                foreach (var item in listaBoletos)
+                {
+                    if (item.idEstado == 1) //pregunto si el boleto está en reservado
+                    {
+                        item.idEstado = 3; //lo paso a cancelado porque ya pasó esa fecha
+                    }
+                }
+                db.SaveChanges();
+                return RedirectToAction("ListaBoletos", "Boleto");
+            }
+            else
+            {
+                Empleados empleado = db.Empleados.SingleOrDefault(e => e.idUsuario == id);
+
+                string fechaIngreso = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                string[] roles = Roles.GetRolesForUser();
+                string log = "";
+                if (Roles.IsUserInRole("EmpleadoAgencia"))
+                {
+                    log = "[" + fechaIngreso + "] " + "Inicio Sesión - " + roles.First() + " " + empleado.Usuario.apellido + " Agencia";
+                }
+                else
+                {
+                    log = "[" + fechaIngreso + "] " + "Inicio Sesión - " + roles.First() + " " + empleado.Usuario.apellido + " " + empleado.Aerolineas.Nombre;
+                
+                }
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alumno\Desktop\Log.txt", true))
+                {
+                    file.WriteLine(log);
+                }
+
+                var vuelos = db.Vuelos.Include(v => v.Conexiones);
+                vuelos = vuelos.Where(v => v.fecha >= DateTime.Now);
+                ViewBag.aero = new SelectList(db.Aerolineas, "AerolineaID", "infoAerolinea");
+                return View(vuelos.ToList());
+            }
+
         }
         //
         // POST: /Vuelo/
@@ -30,6 +67,7 @@ namespace TF_Base.Controllers
         public ActionResult Index(FormCollection fm)
         {
             var vuelos = db.Vuelos.Include(v => v.Conexiones);
+            vuelos = vuelos.Where(v => v.fecha >= DateTime.Now);
             ViewBag.aero = new SelectList(db.Aerolineas, "AerolineaID", "infoAerolinea");
 
             if (Request["btn"] != null)
@@ -66,7 +104,7 @@ namespace TF_Base.Controllers
         {
             int idUsuario = WebSecurity.CurrentUserId;
             Empleados empleado = db.Empleados.SingleOrDefault(e => e.idUsuario == idUsuario);
-            ViewBag.ConexionID = new SelectList(db.Conexiones.Where(c => c.AerolineaID == empleado.AerolineaID), "ConexionID", "infoConexion");
+            ViewBag.ConexionID = new SelectList(db.Conexiones.Where(c => c.AerolineaID == empleado.AerolineaID), "ConexionID", "infoConexionConAerolinea");
 
             return View();
         }
@@ -81,7 +119,8 @@ namespace TF_Base.Controllers
         {
             int idUsuario = WebSecurity.CurrentUserId;
             Empleados empleado = db.Empleados.SingleOrDefault(e => e.idUsuario == idUsuario);
-            ViewBag.ConexionID = new SelectList(db.Conexiones.Where(c => c.AerolineaID == empleado.AerolineaID), "ConexionID", "infoConexion", vuelos.AerolineaID);
+            ViewBag.ConexionID = new SelectList(db.Conexiones.Where(c => c.AerolineaID == empleado.AerolineaID), "ConexionID", "infoConexionConAerolinea", vuelos.AerolineaID);
+
             if (ModelState.IsValid)
             {
                 if (vuelos.fecha < DateTime.Now)
@@ -91,14 +130,25 @@ namespace TF_Base.Controllers
                 }
                 else
                 {
-                    vuelos.asientosDisponibles = vuelos.capacidad;
-                    vuelos.AerolineaID = empleado.AerolineaID;
-                    db.Vuelos.Add(vuelos);
+                    List<Vuelos> busqueda = db.Vuelos.Where(v => v.ConexionID == vuelos.ConexionID && v.fecha == vuelos.fecha).ToList();
+                    //me fijo si ya hay un vuelo con la misma fecha y la misma conexion
+                    if (busqueda.Count() > 0)
+                    {
+                        ModelState.AddModelError("", "Ya existe un vuelo con esta fecha y esta conexion");
+                        return View();
+                    }
+                    else
+                    {
+                        vuelos.asientosDisponibles = vuelos.capacidad;
+                        vuelos.AerolineaID = empleado.AerolineaID;
+                        db.Vuelos.Add(vuelos);
+                    }
+
                 }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-           
+
             return View(vuelos);
         }
 
@@ -156,17 +206,9 @@ namespace TF_Base.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Vuelos vuelos = db.Vuelos.Find(id);
-            ViewBag.error = false;
-            if (vuelos.asientosDisponibles == vuelos.capacidad)
-            {
-                db.Vuelos.Remove(vuelos);
-            }
-            else
-            {
-                ViewBag.error = true;
-            }
+
+            ViewBag.error = true;
             
-            db.SaveChanges();
             return View("Delete");
         }
 

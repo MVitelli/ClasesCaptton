@@ -6,6 +6,7 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
     <div>
@@ -13,10 +14,11 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Empleado</a>
+                    <i class="fa fa-plane" style="font-size:24px;color:lightblue;text-shadow:2px 2px 4px #000000;"></i>
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a href="../Vuelo/Index">Lista de Vuelos</a></li>
-                                        
+
                     @if (!(Roles.IsUserInRole("EncargadoAerolinea")))
                     {
                         <li><a href="../Boleto/Index">Boletos</a></li>
@@ -29,9 +31,8 @@
                     @if (WebSecurity.CurrentUserId != -1)
                     {   
                         @Html.Label(WebSecurity.CurrentUserName)
-                        <a href="../Account/Logout">Logout</a>
+                        <a href="../Account/Logout"><strong>Logout</strong></a>
                     }
-
                 </p>
             </div>
         </nav>

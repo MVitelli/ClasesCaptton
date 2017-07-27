@@ -5,7 +5,7 @@
 }
 @if (ViewBag.error)
 {
-    <script>alert("No se puede eliminar el vuelo, tiene boletos vendidos");</script>
+    <script>alert("No se puede eliminar el vuelo");</script>
 }
 <h2>Eliminar vuelo</h2>
 
@@ -14,14 +14,14 @@
     <legend>Vuelos</legend>
 
     <div class="display-label">
-        <label>Informacion del vuelo</label>
+        <strong>Informacion del vuelo</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.infoVuelo)
     </div>
 
     <div class="display-label">
-        <label>Cantidad de personas con reserva en el vuelo</label>
+        <strong>Cantidad de personas con reserva en el vuelo</strong>
     </div>
     <div class="display-field">
         @Session["ocupados"]

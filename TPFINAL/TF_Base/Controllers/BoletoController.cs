@@ -80,8 +80,18 @@ namespace TF_Base.Controllers
         public ActionResult Create(Boletos boletos)
         {
             ViewBag.dni = new SelectList(db.Cliente, "dni", "dni", boletos.dni);
-            ViewBag.idEstado = new SelectList(db.Estado, "idEstado", "nombreEstado", boletos.idEstado);
-            ViewBag.numeroVuelo = new SelectList(db.Vuelos, "numeroVuelo", "infoVuelo", boletos.numeroVuelo);
+            ViewBag.idEstado = new SelectList(db.Estado.Where(e=>e.nombreEstado!="cancelado"), "idEstado", "nombreEstado", boletos.idEstado);
+            int idUsuario = WebSecurity.CurrentUserId;
+            Empleados empleado = db.Empleados.SingleOrDefault(e => e.idUsuario == idUsuario);
+            if (Roles.IsUserInRole("EmpleadoAerolinea"))
+            {
+                ViewBag.numeroVuelo = new SelectList(db.Vuelos.Where(v => v.AerolineaID == empleado.AerolineaID), "numeroVuelo", "infoVuelo", boletos.numeroVuelo);
+            }
+            else
+            {
+                ViewBag.numeroVuelo = new SelectList(db.Vuelos, "numeroVuelo", "infoVuelo", boletos.numeroVuelo);
+            }
+                      
             if (ModelState.IsValid)
             {
                 Vuelos vueloActual = db.Vuelos.Find(boletos.numeroVuelo);
@@ -142,6 +152,7 @@ namespace TF_Base.Controllers
         {
             int id = WebSecurity.CurrentUserId;
             var boletos = db.Boletos.Where(b => b.Cliente.idUsuario == id && b.Vuelos.fecha >= DateTime.Now);
+            //muestro todas las reservas, incluso los cancelados
             return View(boletos);
         }
 

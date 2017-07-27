@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Sistema de Vuelos</a>
+                    <ul class="nav navbar-nav">
+                        <li><i class="fa fa-plane" style="font-size: 24px; color: lightblue; text-shadow: 2px 2px 4px #000000;"></i></li>
+                        <li><a href="../Account/Login">Login</a></li>
+                        <li><a href="../Account/Register">Registrarse</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div>
+        <center>
+        @RenderBody()
+            </center>
+    </div>
+</body>
+</html>
