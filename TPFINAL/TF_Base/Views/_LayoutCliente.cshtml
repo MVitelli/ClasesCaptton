@@ -20,14 +20,14 @@
                   <li><a href="../Boleto/ListaBoletos">Reservas</a></li>
                     <li><a href="../Boleto/Historial">Historial de viajes</a></li>
                 </ul>
-                <p class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
                     @if (WebSecurity.CurrentUserId != -1)
                     {   
-                        @Html.Label(WebSecurity.CurrentUserName)
-                        <a href="../Account/Logout"><strong>Logout</strong></a>
+                        <p class="navbar-text">@Html.Label(WebSecurity.CurrentUserName)</p>   
+                        <li><a href="../Account/Logout">Logout</a></li>
                     }
 
-                </p>
+                </ul>
             </div>
         </nav>
         @RenderBody()

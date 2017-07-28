@@ -61,11 +61,11 @@ namespace TF_Base.Controllers
             ViewBag.idEstado = new SelectList(db.Estado.Where(e => e.nombreEstado != "cancelado"), "idEstado", "nombreEstado");
             if (Roles.IsUserInRole("EmpleadoAerolinea"))
             {
-                ViewBag.numeroVuelo = new SelectList(db.Vuelos.Where(v => v.AerolineaID == empleado.AerolineaID), "numeroVuelo", "infoVuelo");
+                ViewBag.numeroVuelo = new SelectList(db.Vuelos.Where(v => v.AerolineaID == empleado.AerolineaID && v.fecha>=DateTime.Now), "numeroVuelo", "infoVuelo");
             }
             else
             {
-                ViewBag.numeroVuelo = new SelectList(db.Vuelos, "numeroVuelo", "infoVuelo");
+                ViewBag.numeroVuelo = new SelectList(db.Vuelos.Where(v=> v.fecha>=DateTime.Now) , "numeroVuelo", "infoVuelo");
             }
 
 
@@ -85,11 +85,11 @@ namespace TF_Base.Controllers
             Empleados empleado = db.Empleados.SingleOrDefault(e => e.idUsuario == idUsuario);
             if (Roles.IsUserInRole("EmpleadoAerolinea"))
             {
-                ViewBag.numeroVuelo = new SelectList(db.Vuelos.Where(v => v.AerolineaID == empleado.AerolineaID), "numeroVuelo", "infoVuelo", boletos.numeroVuelo);
+                ViewBag.numeroVuelo = new SelectList(db.Vuelos.Where(v => v.AerolineaID == empleado.AerolineaID && v.fecha >= DateTime.Now), "numeroVuelo", "infoVuelo", boletos.numeroVuelo);
             }
             else
             {
-                ViewBag.numeroVuelo = new SelectList(db.Vuelos, "numeroVuelo", "infoVuelo", boletos.numeroVuelo);
+                ViewBag.numeroVuelo = new SelectList(db.Vuelos.Where(v=> v.fecha>=DateTime.Now), "numeroVuelo", "infoVuelo", boletos.numeroVuelo);
             }
                       
             if (ModelState.IsValid)

@@ -25,7 +25,7 @@ namespace TF_Base.Controllers
                 List<Boletos> listaBoletos = db.Boletos.Where(b => b.Cliente.idUsuario == id).ToList();
                 foreach (var item in listaBoletos)
                 {
-                    if (item.idEstado == 1) //pregunto si el boleto está en reservado
+                    if (item.idEstado == 1 && item.Vuelos.fecha < DateTime.Now) //pregunto si el boleto está en reservado y ya pasó la fecha del vuelo
                     {
                         item.idEstado = 3; //lo paso a cancelado porque ya pasó esa fecha
                     }
@@ -47,7 +47,7 @@ namespace TF_Base.Controllers
                 else
                 {
                     log = "[" + fechaIngreso + "] " + "Inicio Sesión - " + roles.First() + " " + empleado.Usuario.apellido + " " + empleado.Aerolineas.Nombre;
-                
+
                 }
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alumno\Desktop\Log.txt", true))
                 {
@@ -181,35 +181,6 @@ namespace TF_Base.Controllers
             }
             ViewBag.AerolineaID = new SelectList(db.Conexiones, "AerolineaID", "CiudadOrigen", vuelos.AerolineaID);
             return View(vuelos);
-        }
-
-        //
-        // GET: /Vuelo/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-            Vuelos vuelos = db.Vuelos.Find(id);
-            Session["ocupados"] = vuelos.capacidad - vuelos.asientosDisponibles;
-            ViewBag.error = false;
-            if (vuelos == null)
-            {
-                return HttpNotFound();
-            }
-            return View(vuelos);
-        }
-
-        //
-        // POST: /Vuelo/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Vuelos vuelos = db.Vuelos.Find(id);
-
-            ViewBag.error = true;
-            
-            return View("Delete");
         }
 
         protected override void Dispose(bool disposing)

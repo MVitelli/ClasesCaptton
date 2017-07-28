@@ -290,7 +290,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Vuelo\Index.cshtml" />
     <Content Include="Views\Vuelo\Create.cshtml" />
-    <Content Include="Views\Vuelo\Delete.cshtml" />
     <Content Include="Views\Boleto\Index.cshtml" />
     <Content Include="Views\Boleto\Details.cshtml" />
     <Content Include="Views\Boleto\Create.cshtml" />

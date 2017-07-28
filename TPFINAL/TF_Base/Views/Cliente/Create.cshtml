@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Alta Cliente";
+    Layout = "../_LayoutEmpleado.cshtml";
 }
 
 <h2>Dar alta cliente</h2>
@@ -21,9 +22,9 @@
             @Html.EditorFor(model => model.dni)
             @Html.ValidationMessageFor(model => model.dni)
         </div>
-
+        <br />
         <p>
-            <input type="submit" value="Dar alta" />
+            <input class="btn btn-primary" type="submit" value="Dar alta" />
         </p>
     </fieldset>
 }
@@ -31,7 +32,3 @@
 <div>
     @Html.ActionLink("Volver a la lista", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

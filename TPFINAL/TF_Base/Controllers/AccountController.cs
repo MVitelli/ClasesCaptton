@@ -90,17 +90,25 @@ namespace mvcStore.Controllers
             {
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(registro.UserName, registro.Password, new { email = registro.UserEmail, dni = registro.Dni, nombre = registro.Nombre, apellido = registro.Apellido });
-                    WebSecurity.Login(registro.UserName, registro.Password);
-                    Roles.AddUserToRole(registro.UserName, "Cliente");
-                    int idUsuarioACrear = WebSecurity.GetUserId(registro.UserName);
-                    Cliente buscado = bd.Cliente.Find(registro.Dni);
-                    if (buscado != null)
+                    Usuario usuarioExistente = bd.Usuario.SingleOrDefault(u => u.dni == registro.Dni);
+                    if (usuarioExistente == null)
                     {
-                        buscado.idUsuario = idUsuarioACrear;
+                        WebSecurity.CreateUserAndAccount(registro.UserName, registro.Password, new { email = registro.UserEmail, dni = registro.Dni, nombre = registro.Nombre, apellido = registro.Apellido });
+                        WebSecurity.Login(registro.UserName, registro.Password);
+                        Roles.AddUserToRole(registro.UserName, "Cliente");
+                        int idUsuarioACrear = WebSecurity.GetUserId(registro.UserName);
+                        Cliente buscado = bd.Cliente.Find(registro.Dni);
+                        if (buscado != null)
+                        {
+                            buscado.idUsuario = idUsuarioACrear;
+                        }
+                        bd.SaveChanges();
+                        return RedirectToAction("ListaBoletos", "Boleto");
                     }
-                    bd.SaveChanges();
-                    return RedirectToAction("ListaBoletos", "Boleto");
+                    else
+                    {
+                        ModelState.AddModelError("", "Ya existe ese usuario");
+                    }
                 }
                 catch (MembershipCreateUserException e)
                 {
