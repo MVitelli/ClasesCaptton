@@ -2,53 +2,58 @@
 
 @{
     ViewBag.Title = "Register";
-    Layout = "../_LayoutAero.cshtml";
+    Layout = "../_LayoutLogin.cshtml";
 }
 
-<h2>Register</h2>
+<h2>Registrarse</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Nuevo usuario</legend>
+
         <div class="editor-label">
             @Html.LabelFor(f => f.UserName)
         </div>
         <div class="editor-field">
             @Html.EditorFor(f => f.UserName)
-            @Html.ValidationMessageFor(f => f.UserName)
+            <br />
+            @Html.ValidationMessageFor(f => f.UserName,null, new {@class="text-danger" })
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(f => f.Nombre)
         </div>
         <div class="editor-field">
             @Html.EditorFor(f => f.Nombre)
-            @Html.ValidationMessageFor(f => f.Nombre)
+            <br />
+            @Html.ValidationMessageFor(f => f.Nombre,null, new {@class="text-danger" })
         </div>
 
-         <div class="editor-label">
+        <div class="editor-label">
             @Html.LabelFor(f => f.Apellido)
         </div>
         <div class="editor-field">
             @Html.EditorFor(f => f.Apellido)
-            @Html.ValidationMessageFor(f => f.Apellido)
+            <br />
+            @Html.ValidationMessageFor(f => f.Apellido,null, new {@class="text-danger" })
         </div>
 
-         <div class="editor-label">
+        <div class="editor-label">
             @Html.LabelFor(f => f.Dni)
         </div>
         <div class="editor-field">
             @Html.EditorFor(f => f.Dni)
-            @Html.ValidationMessageFor(f => f.Dni)
+            <br />
+            @Html.ValidationMessageFor(f => f.Dni,null, new {@class="text-danger" })
         </div>
         <div class="editor-label">
             @Html.LabelFor(f => f.UserEmail)
         </div>
         <div class="editor-field">
             @Html.EditorFor(f => f.UserEmail)
-            @Html.ValidationMessageFor(f => f.UserEmail)
+            <br />
+            @Html.ValidationMessageFor(f => f.UserEmail,null, new {@class="text-danger" })
         </div>
 
         <div class="editor-label">
@@ -56,7 +61,8 @@
         </div>
         <div class="editor-field">
             @Html.PasswordFor(f => f.Password)
-        @Html.ValidationMessageFor(f => f.Password)
+            <br />
+            @Html.ValidationMessageFor(f => f.Password,null, new {@class="text-danger" })
         </div>
 
         <div class="editor-label">
@@ -64,9 +70,12 @@
         </div>
         <div class="editor-field">
             @Html.PasswordFor(f => f.PasswordConfirmation)
-        @Html.ValidationMessageFor(f => f.PasswordConfirmation)
+            <br />
+            @Html.ValidationMessageFor(f => f.PasswordConfirmation,null, new {@class="text-danger" })
         </div>
 
-        <input type="submit" value="Create" />
+        <br />
+        <input class="btn btn-primary" type="submit" value="Registrarse" />
     </fieldset>
 }
+

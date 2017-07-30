@@ -30,25 +30,44 @@ namespace mvcStore.Controllers
                 bool res = WebSecurity.Login(login.UserName, login.Password, login.RememberMe);
                 if (res)
                 {
-                    if (Roles.IsUserInRole("Cliente"))
-                    {
-                        return RedirectToAction("Index", "Boleto");
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Vuelo");
-                    }
+                    return RedirectToAction("Index", "Vuelo");
+
                 }
             }
 
             ModelState.AddModelError("", "Error al logearse");
-            return View(login);
+            return View();
         }
 
         //
         // GET: /Account/Logout
         public ActionResult Logout()
         {
+
+            if (!Roles.IsUserInRole("Cliente"))
+            {
+                int id = WebSecurity.CurrentUserId;
+
+                Empleados empleado = bd.Empleados.SingleOrDefault(e => e.idUsuario == id);
+
+                string fechaEgreso = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                string[] roles = Roles.GetRolesForUser();
+                string log = "";
+                if (Roles.IsUserInRole("EmpleadoAgencia"))
+                {
+                    log = "[" + fechaEgreso + "] " + "Cierre Sesión - " + roles.First() + " " + empleado.Usuario.apellido + " Agencia";
+                }
+                else
+                {
+                    log = "[" + fechaEgreso + "] " + "Cierre Sesión - " + roles.First() + " " + empleado.Usuario.apellido + " " + empleado.Aerolineas.Nombre;
+
+                }
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alumno\Desktop\Log.txt", true))
+                {
+                    file.WriteLine(log);
+                }
+            }
+
             WebSecurity.Logout();
             return RedirectToAction("Login", "Account");
         }
@@ -71,10 +90,25 @@ namespace mvcStore.Controllers
             {
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(registro.UserName, registro.Password, new { email = registro.UserEmail, dni=registro.Dni, nombre=registro.Nombre, apellido=registro.Apellido });
-                    WebSecurity.Login(registro.UserName, registro.Password);
-                    Roles.AddUserToRole(registro.UserName, "Cliente");
-                    return RedirectToAction("ListaBoletos", "Boleto");
+                    Usuario usuarioExistente = bd.Usuario.SingleOrDefault(u => u.dni == registro.Dni);
+                    if (usuarioExistente == null)
+                    {
+                        WebSecurity.CreateUserAndAccount(registro.UserName, registro.Password, new { email = registro.UserEmail, dni = registro.Dni, nombre = registro.Nombre, apellido = registro.Apellido });
+                        WebSecurity.Login(registro.UserName, registro.Password);
+                        Roles.AddUserToRole(registro.UserName, "Cliente");
+                        int idUsuarioACrear = WebSecurity.GetUserId(registro.UserName);
+                        Cliente buscado = bd.Cliente.Find(registro.Dni);
+                        if (buscado != null)
+                        {
+                            buscado.idUsuario = idUsuarioACrear;
+                        }
+                        bd.SaveChanges();
+                        return RedirectToAction("ListaBoletos", "Boleto");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Ya existe ese usuario");
+                    }
                 }
                 catch (MembershipCreateUserException e)
                 {

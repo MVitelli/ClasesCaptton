@@ -2,44 +2,44 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "../_LayoutAero.cshtml";
+    Layout = "../_LayoutEmpleado.cshtml";
 }
 
 <h2>Lista de vuelos</h2>
 
 <p>
-    @Html.ActionLink("Agregar vuelo", "Create")
+    @if (Roles.IsUserInRole("EncargadoAerolinea"))
+    {
+        @Html.ActionLink("Agregar vuelo", "Create", null, new { @class = "btn btn-default" })
+    }
 </p>
 <table class="table table-striped">
     <tr>
+<<<<<<< HEAD
         <th>Aerolinea
         </th>
         <th>Lugar de origen
+=======
+        <th>Fecha
+>>>>>>> 1ab265dad34a3bb8d267152898679fb11f03803b
         </th>
-        <th>Lugar de destino 
+        <th>Aerolinea
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConexionID)
+        <th>Informacion Conexion
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.numeroVuelo)
+        <th>N° vuelo
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fecha)
+        <th>Asientos disponibles
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.asientosDisponibles)
+        <th>Capacidad
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.capacidad)
-        </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
             <td>
+<<<<<<< HEAD
                 @Html.DisplayFor(modelItem => item.AerolineaID)
             </td>
             <td>
@@ -49,17 +49,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Conexiones.CiudadDestino) - 
                 @Html.DisplayFor(modelItem => item.Conexiones.PaisDestino)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConexionID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.numeroVuelo)
-            </td>
-            <td>
+=======
                 @Html.DisplayFor(modelItem => item.fecha.Day)/
                 @Html.DisplayFor(modelItem => item.fecha.Month)/
                 @Html.DisplayFor(modelItem => item.fecha.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Conexiones.Aerolineas.Nombre)
+>>>>>>> 1ab265dad34a3bb8d267152898679fb11f03803b
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Conexiones.infoConexion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numeroVuelo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.asientosDisponibles)
@@ -67,20 +70,21 @@
             <td>
                 @Html.DisplayFor(modelItem => item.capacidad)
             </td>
+<<<<<<< HEAD
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.numeroVuelo }) |
             @Html.ActionLink("Details", "Details", new { id = item.numeroVuelo }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.numeroVuelo })
             </td>
+=======
+>>>>>>> 1ab265dad34a3bb8d267152898679fb11f03803b
         </tr>
     }
 
 </table>
 
-<label>Filtrar por aerolinea</label>
-<br />
 <form action="#" method="post">
     @Html.DropDownList("aero", "Seleccione aerolinea")
-    <input type="submit" name="btn" value="Buscar vuelos de la aerolinea" />
+    <input class="btn btn-default" type="submit" name="btn" value="Filtrar por aerolinea" />
 </form>
 <br />

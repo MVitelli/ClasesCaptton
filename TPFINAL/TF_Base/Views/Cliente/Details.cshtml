@@ -4,26 +4,34 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <fieldset>
     <legend>Cliente</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Usuario.nombre)
+        <strong>Nombre de usuario</strong>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Usuario.nombre)
-    </div>
+    @if (Model.idUsuario != null)
+    {
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Usuario.nombre)
+        </div>
+    }
+    else
+    {
+        <div class="display-field">
+            <label>No tiene usuario</label>
+        </div>
+    }
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.dni)
+        <strong>DNI</strong>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.dni)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver a la lista", "Index")
 </p>

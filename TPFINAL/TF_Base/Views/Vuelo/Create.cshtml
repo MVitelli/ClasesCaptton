@@ -2,10 +2,10 @@
 
 @{
     ViewBag.Title = "Create";
-    Layout = "../_LayoutAero.cshtml";
+    Layout = "../_LayoutEmpleado.cshtml";
 }
 
-<h2>Crear Vuelo</h2>
+<h2>Agregar Vuelo</h2> 
 
 @using (Html.BeginForm())
 {
@@ -38,14 +38,14 @@
             @Html.EditorFor(model => model.capacidad)
             @Html.ValidationMessageFor(model => model.capacidad)
         </div>
-
+        <br />
         <p>
-            <input type="submit" value="Crear" />
+            <input class="btn btn-default" type="submit" value="Agregar" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver a la lista", "Index")
 </div>
 

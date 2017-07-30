@@ -2,32 +2,31 @@
 
 @{
     ViewBag.Title = "Login";
-    Layout = "../_LayoutAero.cshtml";
-}
+    Layout = "../_LayoutLogin.cshtml";
+    }
 
-<h2>Login</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
+       
+     <fieldset>
         <legend>Login</legend>
 
         <div class="editor-label">
             @Html.LabelFor(f => f.UserName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(f => f.UserName)
-            @Html.ValidationMessageFor(f => f.UserName)
+            @Html.EditorFor(f => f.UserName, "Login", new { @class = "form-control", @placeholder = "e.g. Un usuario", style = "width: 400px" })
+            @Html.ValidationMessageFor(f => f.UserName,null, new {@class="text-danger" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(f => f.Password)
         </div>
         <div class="editor-field">
-            @Html.PasswordFor(f => f.Password)
-            @Html.ValidationMessageFor(f => f.Password)
+            @Html.PasswordFor(f => f.Password, new { @class = "form-control", @placeholder = "123456", style = "width: 400px" })
+            @Html.ValidationMessageFor(f => f.Password,null, new {@class="text-danger" })
         </div>
 
         <div class="editor-label">
@@ -38,6 +37,10 @@
             @Html.ValidationMessageFor(f => f.RememberMe)
         </div>
 
-        <input type="submit" value="Guardar" />
+        <input class="btn btn-primary" type="submit" value="Ingresar" />
     </fieldset>
+      
 }
+<br />
+Si no tiene usuario, Registrese <a href="../Account/Register">aquí</a>
+</center>

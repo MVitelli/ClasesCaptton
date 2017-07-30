@@ -16,6 +16,7 @@ namespace TF_Base.Controllers
         //
         // GET: /Cliente/
 
+        [Authorize(Roles="EmpleadoAerolinea,EmpleadoAgencia")]
         public ActionResult Index()
         {
             var cliente = db.Cliente.Include(c => c.Usuario);

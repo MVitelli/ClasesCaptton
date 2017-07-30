@@ -2,51 +2,55 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "../_LayoutAero.cshtml";
+    Layout = "../_LayoutEmpleado.cshtml";
 }
 
 <h2>Boletos</h2>
 
 <p>
-    @Html.ActionLink("Agregar Boleto", "Create")
+    @Html.ActionLink("Agregar Boleto", "Create", null, new { @class="btn btn-default"})
 </p>
-<table class="table table-bordered">
+<table class="table table-striped">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Vuelos.AerolineaID)
+        <th>Informacion boleto
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cliente.dni)
+        <th>Numero de vuelo</th>
+        <th>ID Boleto
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado.nombreEstado)
+        <th>DNI Cliente
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idBoleto)
+        <th>Estado boleto
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vuelos.AerolineaID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cliente.dni)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado.nombreEstado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.idBoleto)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idBoleto }) |
-            @Html.ActionLink("Details", "Details", new {id=item.idBoleto}) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idBoleto})
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.infoBoleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numeroVuelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idBoleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.dni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado.nombreEstado)
+            </td>
+            <td>
+                @if (item.idEstado == 1) //Pregunto si es diferente de cancelado
+                {
+                    @Html.ActionLink("Confirmar", "Confirmar", new { id = item.idBoleto }, new { @class = "btn btn-success" })<label> </label>   
+                    @Html.ActionLink("Cancelar", "Cancelar", new { id = item.idBoleto }, new { @class = "btn btn-danger" })  
+                }
+                @Html.ActionLink("Detalles", "Details", new { id = item.idBoleto }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+    }
 
 </table>
