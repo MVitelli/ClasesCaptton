@@ -1,0 +1,43 @@
+﻿@model TF_Base.Models.Boletos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<fieldset>
+    <legend>Boletos</legend>
+
+    <div class="display-label">
+        <strong>ID del Boleto</strong>
+    </div>
+
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idBoleto)
+    </div>
+    <div class="display-label">
+        <strong>Informacion del boleto</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.infoBoleto)
+    </div>
+
+    <div class="display-label">
+        <strong>DNI</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cliente.dni)
+    </div>
+
+    <div class="display-label">
+        <strong>Estado del boleto</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Estado.nombreEstado)
+    </div>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

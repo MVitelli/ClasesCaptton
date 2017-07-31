@@ -1,0 +1,49 @@
+﻿@model TF_Base.Models.Boletos
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "../_LayoutEmpleado.cshtml";
+}
+
+<h2>Reservar boleto</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Boletos</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.numeroVuelo, "Vuelos")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("numeroVuelo", String.Empty)
+            @Html.ValidationMessageFor(model => model.numeroVuelo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.dni, "Cliente")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("dni", String.Empty)
+            @Html.ValidationMessageFor(model => model.dni)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idEstado, "Estado")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idEstado", String.Empty)
+            @Html.ValidationMessageFor(model => model.idEstado)
+        </div>
+               
+        <p>
+            <input type="submit" value="Reservar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver a la lista", "Index")
+</div>

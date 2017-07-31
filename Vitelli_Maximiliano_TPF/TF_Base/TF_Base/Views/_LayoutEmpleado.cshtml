@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Empleado</a>
+                    <i class="fa fa-plane" style="font-size: 24px; color: lightblue; text-shadow: 2px 2px 4px #000000;"></i>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="../Vuelo/Index">Lista de Vuelos</a></li>
+
+                    @if (!(Roles.IsUserInRole("EncargadoAerolinea")))
+                    {
+                        <li><a href="../Boleto/Index">Boletos</a></li>
+                        <li><a href="../Cliente/Index">Listado de clientes</a></li>
+                        <li><a href="../Cliente/Create">Dar alta a cliente</a></li>
+                    }
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (WebSecurity.CurrentUserId != -1)
+                    {   
+                        <p class="navbar-text">@Html.Label(WebSecurity.CurrentUserName)</p>   
+                        <li><a href="../Account/Logout">Logout</a></li>
+                    }
+                </ul>
+            </div>
+        </nav>
+        @RenderBody()
+    </div>
+</body>
+</html>

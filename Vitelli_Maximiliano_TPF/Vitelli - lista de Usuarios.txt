@@ -1,0 +1,6 @@
+Nombre de usuario		Contraseña		Rol asignado
+
+encargadoAero			123456			Encargado Aerolinea	
+empleadoAero			123456			Empleado Aerolinea
+empleadoAgen			123456			Empleado Agencia
+cliente1			123456			Cliente

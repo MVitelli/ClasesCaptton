@@ -1,0 +1,34 @@
+﻿@model TF_Base.Models.Cliente
+
+@{
+    ViewBag.Title = "Alta Cliente";
+    Layout = "../_LayoutEmpleado.cshtml";
+}
+
+<h2>Dar alta cliente</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Cliente</legend>
+
+        <div class="editor-label">
+            DNI
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.dni)
+            @Html.ValidationMessageFor(model => model.dni)
+        </div>
+        <br />
+        <p>
+            <input class="btn btn-primary" type="submit" value="Dar alta" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Volver a la lista", "Index")
+</div>

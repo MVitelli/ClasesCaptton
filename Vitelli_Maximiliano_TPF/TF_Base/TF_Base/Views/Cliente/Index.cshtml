@@ -1,0 +1,37 @@
+﻿@model IEnumerable<TF_Base.Models.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "../_LayoutEmpleado.cshtml";
+}
+<h2>Listado de clientes</h2>
+
+<p>
+    @Html.ActionLink("Agregar cliente", "Create", null, new { @class = "btn btn-default" })
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>Nombre de usuario
+        </th>
+        <th>
+            DNI
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dni)
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "Details", new { id = item.dni }, new { @class = "btn btn-warning" })
+            </td>
+        </tr>
+    }
+
+</table>

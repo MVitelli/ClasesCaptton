@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TF_Base.Models.Boletos>
+@{
+    ViewBag.Title = "ListaBoletos";
+    Layout = "../_LayoutCliente.cshtml";
+}
+
+<h2>Lista de reservas</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Informacion boleto
+        </th>
+        <th>Numero de vuelo</th>
+        <th>ID Boleto
+        </th>
+        <th>Estado boleto
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.infoBoleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numeroVuelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idBoleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado.nombreEstado)
+            </td>
+        </tr>
+    }
+
+</table>

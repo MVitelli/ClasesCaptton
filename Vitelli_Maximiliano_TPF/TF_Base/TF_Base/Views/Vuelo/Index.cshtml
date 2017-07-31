@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TF_Base.Models.Vuelos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "../_LayoutEmpleado.cshtml";
+}
+
+<h2>Lista de vuelos</h2>
+
+<p>
+    @if (Roles.IsUserInRole("EncargadoAerolinea"))
+    {
+        @Html.ActionLink("Agregar vuelo", "Create", null, new { @class = "btn btn-default" })
+    }
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>Fecha
+        </th>
+        <th>Aerolinea
+        </th>
+        <th>Informacion Conexion
+        </th>
+        <th>N° vuelo
+        </th>
+        <th>Asientos disponibles
+        </th>
+        <th>Capacidad
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha.Day)/
+                @Html.DisplayFor(modelItem => item.fecha.Month)/
+                @Html.DisplayFor(modelItem => item.fecha.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Conexiones.Aerolineas.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Conexiones.infoConexion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numeroVuelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.asientosDisponibles)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capacidad)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<form action="#" method="post">
+    @Html.DropDownList("aero", "Seleccione aerolinea")
+    <input class="btn btn-default" type="submit" name="btn" value="Filtrar por aerolinea" />
+</form>
+<br />
